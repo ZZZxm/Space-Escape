@@ -8,6 +8,9 @@
 4. 货币系统（商店/商人）
 5. 隐藏收集品
 
+## 游戏基础架构
+![structure.png](https://github.com/ZZZxm/The-Last-Templar/blob/main/docpic/structure.png)
+
 ## 分工
 
 1. 架构：黄颖、蔡方俊妍
