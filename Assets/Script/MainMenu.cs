@@ -12,6 +12,12 @@ using UnityEngine.SceneManagement;
 */
 public class MainMenu : MonoBehaviour
 {
+
+    public void Awake()
+    {
+        Screen.SetResolution(1200, 650, false);
+    }
+
     public void NewGame()  //新游戏
     {
         SceneManager.LoadScene("GameStart");
@@ -27,7 +33,7 @@ public class MainMenu : MonoBehaviour
 
     }
 
-     public void Quit()  //退出游戏
+    public void Quit()  //退出游戏
     {
         Application.Quit();
     }
