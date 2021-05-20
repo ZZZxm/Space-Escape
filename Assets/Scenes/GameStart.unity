@@ -375,7 +375,7 @@ MonoBehaviour:
   rotationSpeed: 360
   slowdownDistance: 0.6
   pickNextWaypointDist: 1.55
-  endReachedDistance: 0
+  endReachedDistance: 3
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
@@ -2848,12 +2848,12 @@ PrefabInstance:
     - target: {fileID: 4478828912090364744, guid: 15149249f7169f84d9c2af72ab6fb44a,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4478828912090364744, guid: 15149249f7169f84d9c2af72ab6fb44a,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4478828912090364744, guid: 15149249f7169f84d9c2af72ab6fb44a,
         type: 3}
