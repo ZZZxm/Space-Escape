@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public abstract class PlayerController : MonoBehaviour
 {
     // Used to store a reference to the Player's animator component.
-    private Animator animator;
+    protected Animator animator;
     public LayerMask blockingLayer;// use to detect whether has collision
     public BoxCollider2D boxCollider;
     public Rigidbody2D rb2D;
     public float speed;// make calculation of moveTime more quickly
     Vector2 movement;
     bool death;
+    int totalBlood;
+    int currentBlood;
 
     // Start is called before the first frame update
     void Start()
@@ -62,6 +64,10 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("turnRight", false);
         }
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            normalAttack();
+        }
         // move
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
@@ -78,4 +84,13 @@ public class PlayerController : MonoBehaviour
     {
         rb2D.MovePosition(rb2D.position + movement * speed * Time.fixedDeltaTime);
     }
+    public void hurt(int deltaBlood)
+    {
+        this.currentBlood -= deltaBlood;
+    }
+    public int getCurrentBlood()
+    {
+        return this.currentBlood;
+    }
+    public abstract void normalAttack();
 }
