@@ -1254,7 +1254,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 843702956}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 60
   m_LinearDrag: 0
@@ -1263,7 +1263,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!19719996 &843702961
 TilemapCollider2D:
@@ -1281,6 +1281,18 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!61 &903706360 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 8540901756314869711, guid: 7583880a7267b456f83e08817e60d8e0,
+    type: 3}
+  m_PrefabInstance: {fileID: 8540901756467146885}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &903706361 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 8540901756314869710, guid: 7583880a7267b456f83e08817e60d8e0,
+    type: 3}
+  m_PrefabInstance: {fileID: 8540901756467146885}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1240126656
 GameObject:
   m_ObjectHideFlags: 0
@@ -2832,8 +2844,38 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1732376746905131730, guid: 15149249f7169f84d9c2af72ab6fb44a,
         type: 3}
+      propertyPath: m_Mass
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1732376746905131730, guid: 15149249f7169f84d9c2af72ab6fb44a,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1732376746905131730, guid: 15149249f7169f84d9c2af72ab6fb44a,
+        type: 3}
+      propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1732376746905131730, guid: 15149249f7169f84d9c2af72ab6fb44a,
+        type: 3}
       propertyPath: m_Constraints
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1732376746905131730, guid: 15149249f7169f84d9c2af72ab6fb44a,
+        type: 3}
+      propertyPath: m_UseAutoMass
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1732376746905131730, guid: 15149249f7169f84d9c2af72ab6fb44a,
+        type: 3}
+      propertyPath: m_SleepingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1732376746905131730, guid: 15149249f7169f84d9c2af72ab6fb44a,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2724438741097893678, guid: 15149249f7169f84d9c2af72ab6fb44a,
         type: 3}
@@ -2913,12 +2955,22 @@ PrefabInstance:
     - target: {fileID: 7108034074426964858, guid: 15149249f7169f84d9c2af72ab6fb44a,
         type: 3}
       propertyPath: m_Size.x
-      value: 1
+      value: 0.263
       objectReference: {fileID: 0}
     - target: {fileID: 7108034074426964858, guid: 15149249f7169f84d9c2af72ab6fb44a,
         type: 3}
       propertyPath: m_Size.y
-      value: 1
+      value: 0.234
+      objectReference: {fileID: 0}
+    - target: {fileID: 7108034074426964858, guid: 15149249f7169f84d9c2af72ab6fb44a,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0.082
+      objectReference: {fileID: 0}
+    - target: {fileID: 7108034074426964858, guid: 15149249f7169f84d9c2af72ab6fb44a,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.283
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15149249f7169f84d9c2af72ab6fb44a, type: 3}
@@ -2929,10 +2981,70 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8540901756314869705, guid: 7583880a7267b456f83e08817e60d8e0,
+        type: 3}
+      propertyPath: rb2D
+      value: 
+      objectReference: {fileID: 903706361}
+    - target: {fileID: 8540901756314869705, guid: 7583880a7267b456f83e08817e60d8e0,
+        type: 3}
+      propertyPath: speed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540901756314869705, guid: 7583880a7267b456f83e08817e60d8e0,
+        type: 3}
+      propertyPath: boxCollider
+      value: 
+      objectReference: {fileID: 903706360}
+    - target: {fileID: 8540901756314869705, guid: 7583880a7267b456f83e08817e60d8e0,
+        type: 3}
+      propertyPath: blockingLayer.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
     - target: {fileID: 8540901756314869708, guid: 7583880a7267b456f83e08817e60d8e0,
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540901756314869710, guid: 7583880a7267b456f83e08817e60d8e0,
+        type: 3}
+      propertyPath: m_Mass
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540901756314869710, guid: 7583880a7267b456f83e08817e60d8e0,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540901756314869710, guid: 7583880a7267b456f83e08817e60d8e0,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540901756314869710, guid: 7583880a7267b456f83e08817e60d8e0,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540901756314869711, guid: 7583880a7267b456f83e08817e60d8e0,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540901756314869711, guid: 7583880a7267b456f83e08817e60d8e0,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540901756314869711, guid: 7583880a7267b456f83e08817e60d8e0,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0.035
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540901756314869711, guid: 7583880a7267b456f83e08817e60d8e0,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8540901756393469057, guid: 7583880a7267b456f83e08817e60d8e0,
         type: 3}
