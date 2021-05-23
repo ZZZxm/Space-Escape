@@ -20,7 +20,7 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 83a14d4aba2a6fe418886d3c4f8b9e72, type: 3}
+      value: {fileID: 21300000, guid: 225c7d5b5352a664fbed74d06fd5fb35, type: 3}
     - time: 0.083333336
       value: {fileID: 21300000, guid: 01b17ac5d94368146a4424204d6aebaf, type: 3}
     - time: 0.16666667
@@ -60,7 +60,7 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 83a14d4aba2a6fe418886d3c4f8b9e72, type: 3}
+    - {fileID: 21300000, guid: 225c7d5b5352a664fbed74d06fd5fb35, type: 3}
     - {fileID: 21300000, guid: 01b17ac5d94368146a4424204d6aebaf, type: 3}
     - {fileID: 21300000, guid: f77110a7ba5d5a346884b4dae831f640, type: 3}
     - {fileID: 21300000, guid: 21ce3199ebf8f24428295ae8f1384f0c, type: 3}
@@ -95,4 +95,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.5
+    functionName: AttackPlayer
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

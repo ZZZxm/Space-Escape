@@ -434,11 +434,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 692106238}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c16ffe5e36ff64e4a8fab239426bb48c, type: 3}
+  m_Script: {fileID: 11500000, guid: 33332a831459e5148a76285f50312e82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack: 0
-  defend: 0
+  attack: 25
+  defend: 10
 --- !u!1 &843702956
 GameObject:
   m_ObjectHideFlags: 0
@@ -2913,6 +2913,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 3909726334745153594, guid: 15149249f7169f84d9c2af72ab6fb44a,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3909726334745153594, guid: 15149249f7169f84d9c2af72ab6fb44a,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4478828912090364744, guid: 15149249f7169f84d9c2af72ab6fb44a,
         type: 3}
       propertyPath: m_RootOrder
@@ -3024,9 +3034,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8540901756314869705, guid: 7583880a7267b456f83e08817e60d8e0,
         type: 3}
+      propertyPath: totalBlood
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540901756314869705, guid: 7583880a7267b456f83e08817e60d8e0,
+        type: 3}
       propertyPath: boxCollider
       value: 
       objectReference: {fileID: 903706360}
+    - target: {fileID: 8540901756314869705, guid: 7583880a7267b456f83e08817e60d8e0,
+        type: 3}
+      propertyPath: currentBlood
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8540901756314869705, guid: 7583880a7267b456f83e08817e60d8e0,
         type: 3}
       propertyPath: blockingLayer.m_Bits
