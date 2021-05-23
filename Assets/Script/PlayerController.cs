@@ -64,10 +64,12 @@ public abstract class PlayerController : MonoBehaviour
         {
             animator.SetBool("turnRight", false);
         }
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetMouseButtonDown(0))
         {
             normalAttack();
+            Debug.Log("click");
         }
+
         // move
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
