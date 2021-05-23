@@ -12,8 +12,8 @@ public abstract class PlayerController : MonoBehaviour
     public float speed;// make calculation of moveTime more quickly
     Vector2 movement;
     bool death;
-    int totalBlood;
-    int currentBlood;
+    public int totalBlood;
+    public int currentBlood;
 
     // Start is called before the first frame update
     void Start()
@@ -89,6 +89,7 @@ public abstract class PlayerController : MonoBehaviour
     public void hurt(int deltaBlood)
     {
         this.currentBlood -= deltaBlood;
+        Debug.Log("Player blood left: " + currentBlood);
     }
     public int getCurrentBlood()
     {
