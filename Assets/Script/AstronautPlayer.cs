@@ -14,7 +14,13 @@ public class AstronautPlayer : PlayerController
 
     public override void normalAttack()
     {
-        Debug.Log("normal attack!!");
+        Debug.Log("Astronaut normal attack!!");
+        GameObject bullet = Instantiate(bulletPrefab, rb2D.position, Quaternion.identity);
+        BulletController bc = bullet.GetComponent<BulletController>();
+        if (bc != null)
+        {
+            bc.Move(lookDirection, 300);
+        }
         //throw new System.NotImplementedException();
     }
 }

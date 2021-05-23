@@ -14,6 +14,8 @@ public abstract class PlayerController : MonoBehaviour
     bool death;
     public int totalBlood;
     public int currentBlood;
+    public GameObject bulletPrefab;
+    protected Vector2 lookDirection = new Vector2(0, 1);
 
     // Start is called before the first frame update
     void Start()
@@ -27,11 +29,11 @@ public abstract class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        // turn
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (currentBlood <= 0)
         {
             animator.SetTrigger("Death");
         }
+        // turn
         if (Input.GetKeyDown(KeyCode.S))
         {
             animator.SetBool("turnFront", true);
@@ -67,12 +69,13 @@ public abstract class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             normalAttack();
-            Debug.Log("click");
+            Debug.Log("normal attack");
         }
 
         // move
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
+        lookDirection = movement;
         if (movement == new Vector2(0, 0))
         {
             animator.SetBool("run", false);

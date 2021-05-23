@@ -9,12 +9,14 @@ public abstract class Enemy : MonoBehaviour
     public int defend;
     protected Animator animator;
     protected Transform target;
+    protected Rigidbody2D rb2D;
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
+        rb2D = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
