@@ -17,9 +17,9 @@ public class GameExit : MonoBehaviour
         if (Input.GetKey(KeyCode.Escape))
 
             {
-                UnityEditor.EditorApplication.isPlaying = false;
+                //UnityEditor.EditorApplication.isPlaying = false;
 
-                //Application.Quit();
+                Application.Quit();
 
             } 
     }

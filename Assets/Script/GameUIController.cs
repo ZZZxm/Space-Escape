@@ -7,26 +7,118 @@ using UnityEngine;
     //如若不行再分部分生成
 /*
   属性：游戏界面整体UI gameUI
-  方法:1. 初始化
-       2. 设置当前血条
-       3. 设置最大血条
 */
 public class GameUIController : MonoBehaviour
 {
     public GameObject gameUI;
 
+    public HPbar hpScript;
+    public MPbar mpScript;
+
+    public Money moneyScript;
+
+    public PlayerNum pLayerNum;
+
+    public UnitNum unitNum;
+
+    public PlayTime playTime;
+
+    public UnitTime unitTime;
+
+    public BoxNum boxNum;
+
+    public WinCase winCase;
+
+    public Attribute[] attributes=new Attribute[4];
+
+    public Items[] items=new Items[4];
+
+    public DropdownList[] dropdowns=new DropdownList[4];
+
+    void Awake() 
+    {
+      Instantiate(gameUI);
+     
+    }
     public void Init()  //初始化
     {
       //实例化代码
     }
 
-    public void SetCurrentBlood()  //设置当前血条
+    public void ChangeHP() //当前HP或最大HP发生变化时，由JouenryManager修改全局血量并调用此函数
     {
-        //获得gameUI下的血条图片及txt的component并更新它们的显示
+      hpScript.Change();
     }
 
-     public void SetMaxBlood()  //设置最大血条
+    public void ChangeMP() //当前MP或最大MP发生变化时，由JouenryManager修改全局蓝条并调用此函数
     {
-        //获得gameUI下的血条txt的component并更新它的显示
+      mpScript.Change();
+    }
+
+    public void ChangeMoney()//当前Money发生变化时，由JouenryManager修改全局蓝条并调用此函数
+    {
+      moneyScript.Change();
+    }
+
+    public void ChangePlayerNum()
+    {
+      pLayerNum.Change();
+    }
+
+     public void ChangeUnitNum()
+    {
+      unitNum.Change();
+    }
+
+    public void ChangePlayTime()
+    {
+      playTime.Change();
+    }
+
+    public void  ChangeUnitTime()
+    {
+      unitTime.Change();
+    }
+
+    public void ChangeBoxNum()
+    {
+      boxNum.Change();
+    }
+
+    public void ChangeWinCase()
+    {
+      winCase.Change();
+    }
+
+    public void ChangeAttibute(int i)
+    {
+      if(attributes[i]!=null)
+      {
+         attributes[i].Change();
+      }
+    }
+
+    public void ChangeItem(int i)
+    {
+      if(items[i]!=null)
+      {
+        items[i].Change();
+      }
+    }
+
+    public void ChangeDrop(int i,int j)
+    {
+      if(dropdowns[i]!=null)
+      {
+        dropdowns[i].Change(j);
+      }
+    }
+
+    public void ClearDrop(int i)
+    {
+      if(dropdowns[i]!=null)
+      {
+        dropdowns[i].Clear();
+      }
     }
 }
