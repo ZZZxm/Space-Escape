@@ -365,7 +365,7 @@ public class JourneyManager : MonoBehaviour
         }
     }
 
-    public void ChangeClothes(int i,int j)  //增加装备【只能增加】 j转换成1到4
+    public void ChangeClothes(int i,int j)  //增加装备【只能增加】 j转换成1到4 //i对应着类别0-3，j对应编号0-3
     {
         clothes[i,j]=true;
         gameUIScript.ChangeDrop(i,j+1);
