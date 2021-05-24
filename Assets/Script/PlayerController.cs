@@ -15,7 +15,7 @@ public abstract class PlayerController : MonoBehaviour
     public int totalBlood;
     public int currentBlood;
     public GameObject bulletPrefab;
-    protected Vector2 lookDirection = new Vector2(0, 1);
+    protected Vector2 lookDirection = new Vector2(1, 0);
 
     // Start is called before the first frame update
     void Start()
@@ -66,16 +66,19 @@ public abstract class PlayerController : MonoBehaviour
         {
             animator.SetBool("turnRight", false);
         }
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0)||Input.GetKeyDown(KeyCode.Space))
         {
             normalAttack();
             Debug.Log("normal attack");
         }
 
         // move
-        movement.x = Input.GetAxis("Horizontal");
-        movement.y = Input.GetAxis("Vertical");
-        lookDirection = movement;
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
+        if (movement.x != 0 || movement.y != 0)
+        {
+            lookDirection = movement;
+        }
         if (movement == new Vector2(0, 0))
         {
             animator.SetBool("run", false);

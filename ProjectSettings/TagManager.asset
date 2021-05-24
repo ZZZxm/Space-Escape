@@ -53,3 +53,6 @@ TagManager:
   - name: Wall
     uniqueID: 4269251939
     locked: 0
+  - name: Bullet
+    uniqueID: 2532403457
+    locked: 0
