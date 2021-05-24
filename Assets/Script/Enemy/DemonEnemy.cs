@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,7 +16,7 @@ public class DemonEnemy : Enemy
         if (Mathf.Abs(forwardDistance) <= attackRange && Mathf.Abs(rightDistance) <= attackWidth) 
         {
             // 在攻击范围内
-            AstronautPlayer player = target.GetComponent<AstronautPlayer>();
+            PlayerController player = target.GetComponent<PlayerController>();
             player.hurt(this.attack);
             Debug.Log("Demon hurt the player with " + this.attack + " points!");
         }   

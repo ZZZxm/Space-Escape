@@ -27,7 +27,7 @@ public abstract class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update()
+    protected void Update()
     {
         if (currentBlood <= 0)
         {
@@ -58,6 +58,7 @@ public abstract class PlayerController : MonoBehaviour
     {
         this.currentBlood -= deltaBlood;
         JourneyManager.getInstance().ChangePlayerHP(-deltaBlood);
+        animator.SetTrigger("Hit");
         Debug.Log("Player blood left: " + currentBlood);
     }
     public int getCurrentBlood()

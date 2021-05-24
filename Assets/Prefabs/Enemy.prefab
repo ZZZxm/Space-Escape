@@ -262,5 +262,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33332a831459e5148a76285f50312e82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack: 5
+  attack: 50
   defend: 10
+  currentBlood: 100
