@@ -49,22 +49,6 @@ public abstract class PlayerController : MonoBehaviour
             normalAttack();
             Debug.Log("normal attack");
         }
-
-        // move
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
-        if (movement.x != 0 || movement.y != 0)
-        {
-            lookDirection = movement;
-        }
-        if (movement == new Vector2(0, 0))
-        {
-            animator.SetBool("run", false);
-        }
-        else
-        {
-            animator.SetBool("run", true);
-        }
     }
     private void FixedUpdate()
     {
@@ -73,6 +57,7 @@ public abstract class PlayerController : MonoBehaviour
     public void hurt(int deltaBlood)
     {
         this.currentBlood -= deltaBlood;
+        JourneyManager.getInstance().ChangePlayerHP(-deltaBlood);
         Debug.Log("Player blood left: " + currentBlood);
     }
     public int getCurrentBlood()
