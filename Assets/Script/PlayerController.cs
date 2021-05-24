@@ -34,38 +34,16 @@ public abstract class PlayerController : MonoBehaviour
             animator.SetTrigger("Death");
         }
         // turn
-        if (Input.GetKeyDown(KeyCode.S))
+        movement.x = Input.GetAxis("Horizontal");
+        movement.y = Input.GetAxis("Vertical");
+        if(!Mathf.Approximately(movement.x, 0.0f) || !Mathf.Approximately(movement.y, 0.0f))
         {
-            animator.SetBool("turnFront", true);
+            lookDirection.Set(movement.x, movement.y);
+            lookDirection.Normalize();
         }
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            animator.SetBool("turnLeft", true);
-        }
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            animator.SetBool("turnBack", true);
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            animator.SetBool("turnRight", true);
-        }
-        if (Input.GetKeyUp(KeyCode.S))
-        {
-            animator.SetBool("turnFront", false);
-        }
-        if (Input.GetKeyUp(KeyCode.A))
-        {
-            animator.SetBool("turnLeft", false);
-        }
-        if (Input.GetKeyUp(KeyCode.W))
-        {
-            animator.SetBool("turnBack", false);
-        }
-        if (Input.GetKeyUp(KeyCode.D))
-        {
-            animator.SetBool("turnRight", false);
-        }
+        animator.SetFloat("MoveX", lookDirection.x);
+        animator.SetFloat("MoveY", lookDirection.y);
+        animator.SetFloat("Speed", movement.magnitude);
         if (Input.GetMouseButtonDown(0)||Input.GetKeyDown(KeyCode.Space))
         {
             normalAttack();
