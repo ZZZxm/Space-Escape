@@ -10,6 +10,7 @@ public abstract class Enemy : MonoBehaviour
     protected Animator animator;
     protected Transform target;
     protected Rigidbody2D rb2D;
+    public int currentBlood;
 
     // Start is called before the first frame update
     void Start()
@@ -43,4 +44,18 @@ public abstract class Enemy : MonoBehaviour
     }
 
     public abstract void AttackPlayer();
+    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("BombEffect"))
+        {
+            hurt(GameObject.FindGameObjectWithTag("BombEffect").GetComponent<ExplodeController>().attack);
+        }
+    }
+
+    public void hurt(int deltaBlood)
+    {
+        currentBlood -= deltaBlood;
+        Debug.Log("Enemy Blood:"+currentBlood);
+    }
 }
