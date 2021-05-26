@@ -52,7 +52,7 @@ public class JourneyManager : MonoBehaviour
    /*回合变量部分结束*/
 
    /*此处开始为关卡变量*/
-   public int boxNum=3;  //当前关卡剩余宝箱数
+   public int boxNum=0;  //当前关卡剩余宝箱数
    public int winCase=0;  //当前关卡胜利条件，需手动调gameui更改
 
    public bool canOut=false; //能否通过关卡出口进入下一关，无Ui
@@ -143,6 +143,8 @@ public class JourneyManager : MonoBehaviour
         ITEMPOWER[1]=5;
         ITEMPOWER[2]=5;
         ITEMPOWER[3]=5;
+
+        boxNum=3;
         /*  --------------------------------        JourneyManager一些属性的初始化     ----------------------------------      */
         unitScript = GetComponent<UnitManager>();
         gameUIScript = GetComponent<GameUIController>();
