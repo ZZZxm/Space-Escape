@@ -20,5 +20,6 @@ public class PropCollision : MonoBehaviour
     {
         Debug.Log("clear the object.");
         GameObject.Destroy(gameObject);
+        JourneyManager.getInstance().ChangeBoxNum(1);
     }
 }
