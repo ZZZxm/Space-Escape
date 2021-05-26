@@ -16,10 +16,10 @@ TagManager:
   - Ground
   - Item
   - Collide
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Bullet
+  - Wall
+  - Prop
   - 
   - 
   - 
@@ -44,12 +44,18 @@ TagManager:
   - name: Ground
     uniqueID: 1602112953
     locked: 0
+  - name: Wall
+    uniqueID: 4269251939
+    locked: 0
+  - name: Prop
+    uniqueID: 3630811439
+    locked: 0
   - name: Item
     uniqueID: 139061357
     locked: 0
   - name: Collide
     uniqueID: 765040755
     locked: 0
-  - name: Wall
-    uniqueID: 4269251939
+  - name: Bullet
+    uniqueID: 2532403457
     locked: 0

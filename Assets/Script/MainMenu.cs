@@ -15,7 +15,7 @@ public class MainMenu : MonoBehaviour
 
     public void Awake()
     {
-        Screen.SetResolution(1200, 650, false);
+        Screen.SetResolution(1200, 550, false);
     }
 
     public void NewGame()  //新游戏

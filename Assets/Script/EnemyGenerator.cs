@@ -13,7 +13,7 @@ public class EnemyGenerator : MonoBehaviour
     public GameObject[] midEnemyTiles;
     public GameObject[] bossEnemyTiles;
 
-    public void Instanciate()  //实例化，参数设置为坐标
+    public void Create()  //实例化，参数设置为坐标
     {
         //实例化代码
     }
