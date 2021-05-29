@@ -2,11 +2,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DemonEnemy : Enemy
 {
     private float attackRange = 2.0f;
     private float attackWidth = 1.0f;
+
+
+    private new void Update()
+    {
+        base.Update();
+        //Debug.Log("1111111111");
+    }
     public override void AttackPlayer()
     {
         Vector3 dir = target.position - transform.position;
@@ -22,5 +30,21 @@ public class DemonEnemy : Enemy
         }   
     }
 
+    public override void hurt(int deltaBlood)
+    {
+        blood -= deltaBlood;
+        Debug.Log("Enemy Blood: "+blood);
 
+        Canvas hpBar = GetComponentInChildren<Canvas>();
+        Slider slider = hpBar.GetComponentInChildren<Slider>();
+        slider.value = (float)blood / (float)maxBlood;
+
+
+        if (blood <= 0)
+        {
+            this.rb2D.constraints = RigidbodyConstraints2D.FreezeAll;
+            animator.SetBool("Die", true);
+            Destroy(this.gameObject, 3.0f);
+        }
+    }
 }

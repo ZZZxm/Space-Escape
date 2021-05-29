@@ -29,5 +29,12 @@ public class CameraController : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * smoothing);
         //相机的目标看向 游戏人物
         transform.LookAt(playerPosition.position);
+
+        if (transform.localEulerAngles.z != 0)
+        {
+            float rotX = transform.localEulerAngles.x;
+            float rotY = transform.localEulerAngles.y;
+            transform.localEulerAngles = new Vector3(rotX, rotY, 0);
+        }
     }
 }

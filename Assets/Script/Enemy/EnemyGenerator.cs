@@ -13,8 +13,17 @@ public class EnemyGenerator : MonoBehaviour
     public GameObject[] midEnemyTiles;
     public GameObject[] bossEnemyTiles;
 
-    public void Create()  //实例化，参数设置为坐标
+    private GameObject[] smallEnemies;
+
+    public int NumOfSmallEnemies;
+
+
+    public void Start()  //实例化，参数设置为坐标
     {
-        //实例化代码
+        
+        for (int i = 0; i < smallEnemyTiles.Length; i++) 
+        {
+            Instantiate(smallEnemyTiles[i], new Vector3(11,1,0), Quaternion.identity);
+        }
     }
 }
