@@ -276,19 +276,16 @@ AnimatorStateMachine:
     m_Position: {x: -30, y: 450, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6153613523640207996}
-    m_Position: {x: 230, y: 350, z: 0}
+    m_Position: {x: 240, y: 440, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7392190971201349351}
-    m_Position: {x: 540, y: 350, z: 0}
+    m_Position: {x: 580, y: 430, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2552375227556162967}
     m_Position: {x: 110, y: 150, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2362925798023279658}
-    m_Position: {x: 540, y: 160, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 845258386919895430}
-    m_Position: {x: 575, y: 225, z: 0}
+    m_Position: {x: 460, y: 170, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -364,25 +361,25 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Left
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 1
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Attack
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Die
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer

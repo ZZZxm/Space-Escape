@@ -17,13 +17,37 @@ public class EnemyGenerator : MonoBehaviour
 
     public int NumOfSmallEnemies;
 
+    public GameObject player;
+
+    public float intervalTime = 3.0f;
+
+    public GameObject flyingMonster;
+
 
     public void Start()  //实例化，参数设置为坐标
     {
-        
-        for (int i = 0; i < smallEnemyTiles.Length; i++) 
+        player = GameObject.FindGameObjectWithTag("Player");
+        NumOfSmallEnemies = 0;
+        InvokeRepeating("CreateSmallMonster", 0.5f, intervalTime);
+        flyingMonster = (GameObject)Resources.Load("Prefabs/Enemy/Flying Monster");
+    }
+
+    private void Update() 
+    {
+
+    }
+
+    private void CreateSmallMonster()
+    {
+        int hp = player.GetComponent<PlayerController>().currentBlood;
+        if (hp <= 0)
         {
-            Instantiate(smallEnemyTiles[i], new Vector3(11,1,0), Quaternion.identity);
+            CancelInvoke();
+        }
+        else
+        {
+            Vector3 pos = new Vector3(Random.Range(-13, 13), Random.Range(-13, 13), 0);
+            Instantiate(flyingMonster, pos, Quaternion.identity);
         }
     }
 }

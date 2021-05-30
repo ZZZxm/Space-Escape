@@ -40,6 +40,9 @@ public abstract class Enemy : MonoBehaviour
         AIPath = GetComponent<AIDestinationSetter>();
         AIPath.target = target;
         AIPath.enabled = false;
+        // 绑定血条
+        Canvas hpBar = GetComponentInChildren<Canvas>();
+        slider = hpBar.GetComponentInChildren<Slider>();
     }
 
     protected void Update()
