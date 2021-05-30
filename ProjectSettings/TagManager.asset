@@ -6,6 +6,7 @@ TagManager:
   tags:
   - BombEffect
   - Enemy
+  - JourneyManager
   layers:
   - Default
   - TransparentFX

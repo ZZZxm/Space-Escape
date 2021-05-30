@@ -38,17 +38,8 @@ public class FlyingMonster : SmallEnemy
 
     public override void hurt(int deltaBlood)
     {
-        blood -= deltaBlood;
         Debug.Log("Flying Monster Blood: "+blood);
-
-        slider.value = (float)blood / (float)maxBlood;
-
-        if (blood <= 0)
-        {
-            this.rb2D.constraints = RigidbodyConstraints2D.FreezeAll;
-            animator.SetBool("Die", true);
-            Destroy(this.gameObject, 2.5f);
-        }
+        base.hurt(deltaBlood);
     }
 
 }

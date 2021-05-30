@@ -30,7 +30,7 @@ public class DemonEnemy : Enemy
         }   
     }
 
-    public override void hurt(int deltaBlood)
+    public new void hurt(int deltaBlood)
     {
         blood -= deltaBlood;
         Debug.Log("Enemy Blood: "+blood);
@@ -40,11 +40,6 @@ public class DemonEnemy : Enemy
         slider.value = (float)blood / (float)maxBlood;
 
 
-        if (blood <= 0)
-        {
-            this.rb2D.constraints = RigidbodyConstraints2D.FreezeAll;
-            animator.SetBool("Die", true);
-            Destroy(this.gameObject, 3.0f);
-        }
+
     }
 }

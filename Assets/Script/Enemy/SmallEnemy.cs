@@ -15,5 +15,8 @@ public abstract class SmallEnemy : Enemy
 
     public override abstract void AttackPlayer();
 
-    public override abstract void hurt(int deltaBlood);
+    public override void hurt(int deltaBlood)
+    {
+        base.hurt(deltaBlood);
+    }
 }
