@@ -23,13 +23,15 @@ public class EnemyGenerator : MonoBehaviour
 
     private GameObject player;
 
-    private float intervalTime = 3.0f; // 生成怪物的时间间隔
+    private float intervalTime = 8.0f; // 生成怪物的时间间隔
 
     static private int MAX_ENEMIES = 10; // 最大怪物数
 
     private GameObject flyingMonster;
 
     private GameObject greenMonster;
+
+    private GameObject boss;
 
 
     public void Start()  //实例化，参数设置为坐标
@@ -39,6 +41,7 @@ public class EnemyGenerator : MonoBehaviour
         // 获取所有敌人资源
         flyingMonster = (GameObject)Resources.Load("Prefabs/Enemy/Flying Monster");
         greenMonster = (GameObject)Resources.Load("Prefabs/Enemy/Green Monster");
+        boss = (GameObject)Resources.Load("Prefabs/Enemy/Boss");
 
         // 根据不同模式设置敌人出现机制
         switch (gameMode)
@@ -116,7 +119,8 @@ public class EnemyGenerator : MonoBehaviour
 
     private void Boss()
     {
-
+        Vector3 pos = new Vector3(54, 54, 0);
+        Instantiate(boss, pos, Quaternion.identity);
     }
 
     private void RandomCreateASmallMonster(Vector3 pos)
