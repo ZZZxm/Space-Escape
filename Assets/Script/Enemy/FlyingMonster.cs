@@ -8,18 +8,25 @@ using UnityEngine.UI;
     攻击方式：向前方一格发动攻击
     特点：攻击范围小，攻击力强
 */
-public class FlyingMonster : SmallEnemy
+public class FlyingMonster : Enemy
 {
 
     private float attackRange = 2.0f;// 攻击范围长度
     private float attackWidth = 1.0f;// 攻击范围宽度
 
 
-    // Update is called once per frame
-    private new void Update()
+    new void Start()
     {
-        base.Update();
+        base.Start();
+        // 怪物属性设置
+        this.maxBlood = 500;
+        this.blood = this.maxBlood;
+        this.attack = 50;
+        this.defend = 20;
+        this.viewRadius = 40.0f;
     }
+
+    // Update is called once per frame
 
     public override void AttackPlayer()
     {

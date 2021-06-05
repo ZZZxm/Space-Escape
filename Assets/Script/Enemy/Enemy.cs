@@ -29,7 +29,7 @@ public abstract class Enemy : MonoBehaviour
     protected EnemyGenerator enemyGenerator;
 
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
         animator = GetComponent<Animator>();
         rb2D = GetComponent<Rigidbody2D>();

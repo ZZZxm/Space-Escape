@@ -7,11 +7,6 @@ public abstract class SmallEnemy : Enemy
     // Start is called before the first frame update
 
     // Update is called once per frame
-    protected new void Update()
-    {
-        base.Update();
-        // Debug.Log("111111");
-    }
 
     public override abstract void AttackPlayer();
 

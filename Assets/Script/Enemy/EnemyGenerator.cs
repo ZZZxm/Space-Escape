@@ -29,6 +29,8 @@ public class EnemyGenerator : MonoBehaviour
 
     private GameObject flyingMonster;
 
+    private GameObject greenMonster;
+
 
     public void Start()  //实例化，参数设置为坐标
     {
@@ -36,6 +38,7 @@ public class EnemyGenerator : MonoBehaviour
         NumOfSmallEnemies = 0;
         // 获取所有敌人资源
         flyingMonster = (GameObject)Resources.Load("Prefabs/Enemy/Flying Monster");
+        greenMonster = (GameObject)Resources.Load("Prefabs/Enemy/Green Monster");
 
         // 根据不同模式设置敌人出现机制
         switch (gameMode)
@@ -89,7 +92,7 @@ public class EnemyGenerator : MonoBehaviour
         else
         {
             Vector3 pos = new Vector3(Random.Range(-13, 13), Random.Range(-13, 13), 0);
-            Instantiate(flyingMonster, pos, Quaternion.identity);
+            RandomCreateASmallMonster(pos);
             NumOfSmallEnemies++;
             Debug.Log(NumOfSmallEnemies);
         }
@@ -114,5 +117,24 @@ public class EnemyGenerator : MonoBehaviour
     private void Boss()
     {
 
+    }
+
+    private void RandomCreateASmallMonster(Vector3 pos)
+    {
+        int flag = Random.Range(0, 2);
+
+        switch (flag)
+        {
+            case 0:
+            {
+                Instantiate(flyingMonster, pos, Quaternion.identity);
+                break;
+            }
+            case 1:
+            {
+                Instantiate(greenMonster, pos, Quaternion.identity);
+                break;
+            }
+        }
     }
 }
