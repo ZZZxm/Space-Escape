@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GreenMonster : Enemy
 {
-    
+    public float attackRadius = 2.0f;
     
     new void Start()
     {
@@ -23,5 +23,11 @@ public class GreenMonster : Enemy
     {
         Vector2 dir = target.position - transform.position;
         float sqrDis = dir.sqrMagnitude;
+        if (sqrDis <= attackRadius)
+        {
+            PlayerController player = target.GetComponent<PlayerController>();
+            player.hurt(this.attack);
+            Debug.Log("Green Monster hurt the player with " + this.attack + " pts.");
+        }
     }
 }

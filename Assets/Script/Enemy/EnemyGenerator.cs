@@ -119,7 +119,7 @@ public class EnemyGenerator : MonoBehaviour
 
     private void Boss()
     {
-        Vector3 pos = new Vector3(54, 54, 0);
+        Vector3 pos = new Vector3(10, 0, 0);
         Instantiate(boss, pos, Quaternion.identity);
     }
 
