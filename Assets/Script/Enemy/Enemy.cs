@@ -29,7 +29,12 @@ public abstract class Enemy : MonoBehaviour
     protected EnemyGenerator enemyGenerator;
 
     private GameObject coin;
-    private GameObject bottle;
+    private GameObject hpItem;
+    private GameObject mpItem;
+    private GameObject speedItem;
+    private GameObject defendItem;
+
+
 
     // Start is called before the first frame update
     protected void Start()
@@ -48,7 +53,10 @@ public abstract class Enemy : MonoBehaviour
         slider = hpBar.GetComponentInChildren<Slider>();
         // 获取金币及道具Prefabs
         coin = (GameObject)Resources.Load("Prefabs/Item/coin");
-        bottle = (GameObject)Resources.Load("Prefabs/Item/bottle");
+        hpItem = (GameObject)Resources.Load("Prefabs/Item/HPItem");
+        mpItem = (GameObject)Resources.Load("Prefabs/Item/MPItem");
+        speedItem = (GameObject)Resources.Load("Prefabs/Item/speedItem");
+        defendItem = (GameObject)Resources.Load("Prefabs/Item/defendItem");
     }
 
     protected void Update()
@@ -128,13 +136,50 @@ public abstract class Enemy : MonoBehaviour
     private void Die()
     {   
         Vector3 diePos = transform.position;
-
+ 
         this.state = EnemyState.Die;
         this.rb2D.constraints = RigidbodyConstraints2D.FreezeAll;
         animator.SetBool("Death", true);
         Destroy(this.gameObject, 2.0f);
-        Instantiate(coin, diePos, Quaternion.identity);// 掉落金币
+        DropProps(diePos);
         this.enemyGenerator.NumOfSmallEnemies--;
         Debug.Log("Enemy Left: " + this.enemyGenerator.NumOfSmallEnemies);
+    }
+
+    private void DropProps(Vector3 pos)
+    {
+        int seed = Random.Range(0, 10);
+        if (seed < 7)
+        {
+            Instantiate(coin, pos, Quaternion.identity);// 掉落金币
+        }
+        else
+        {   
+            int p = Random.Range(0, 4);
+            switch(p)
+            {
+                case 0:
+                {
+                    Instantiate(hpItem, pos, Quaternion.identity);
+                    break;
+                }
+                case 1:
+                {
+                    Instantiate(mpItem, pos, Quaternion.identity);
+                    break;
+                }
+                case 2:
+                {
+                    Instantiate(speedItem, pos, Quaternion.identity);
+                    break;
+                }
+                case 3:
+                {
+                    Instantiate(defendItem, pos, Quaternion.identity);
+                    break;
+                }
+            }
+        }
+        
     }
 }

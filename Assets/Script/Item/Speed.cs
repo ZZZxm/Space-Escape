@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Coin : PropCollision
+public class Speed : PropCollision
 {
     // Start is called before the first frame update
     void Start()
@@ -20,9 +20,9 @@ public class Coin : PropCollision
     {
         if (other.gameObject.CompareTag("Player"))
         {   
-            JourneyManager.getInstance().ChangeMoney(5);
+            JourneyManager.getInstance().ChangeItems(2, 1);
             Destroy(this.gameObject);
-            Debug.Log("Coin: " + JourneyManager.getInstance().money);
+            Debug.Log("加速道具：" + JourneyManager.getInstance().items[2]);
         }    
     }
 }
