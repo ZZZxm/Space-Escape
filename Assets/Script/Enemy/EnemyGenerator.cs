@@ -79,6 +79,11 @@ public class EnemyGenerator : MonoBehaviour
 
     }
 
+    public void SetGameMode(GameMode gameMode)
+    {
+        this.gameMode = gameMode;
+    }
+
     private void CreateSmallMonster()
     {
         if (NumOfSmallEnemies >= EnemyGenerator.MAX_ENEMIES)
@@ -108,7 +113,8 @@ public class EnemyGenerator : MonoBehaviour
 
     private void Survival()
     {
-        // 在限定时间内不断生成怪物
+        // 生存模式，在限定时间内不断生成怪物
+        // 玩家存活一定时间即通关
         InvokeRepeating("CreateSmallMonster", 0.5f, intervalTime);
     }
 
@@ -119,6 +125,7 @@ public class EnemyGenerator : MonoBehaviour
 
     private void Boss()
     {
+        // Boss模式，只有一个大Boss
         Vector3 pos = new Vector3(10, 0, 0);
         Instantiate(boss, pos, Quaternion.identity);
     }

@@ -28,6 +28,9 @@ public abstract class Enemy : MonoBehaviour
     protected EnemyState state;
     protected EnemyGenerator enemyGenerator;
 
+    private GameObject coin;
+    private GameObject bottle;
+
     // Start is called before the first frame update
     protected void Start()
     {
@@ -43,6 +46,9 @@ public abstract class Enemy : MonoBehaviour
         // 绑定血条
         Canvas hpBar = GetComponentInChildren<Canvas>();
         slider = hpBar.GetComponentInChildren<Slider>();
+        // 获取金币及道具Prefabs
+        coin = (GameObject)Resources.Load("Prefabs/Item/coin");
+        bottle = (GameObject)Resources.Load("Prefabs/Item/bottle");
     }
 
     protected void Update()
@@ -105,12 +111,7 @@ public abstract class Enemy : MonoBehaviour
 
         if (blood <= 0 && !(this.state == EnemyState.Die))
         {
-            this.state = EnemyState.Die;
-            this.rb2D.constraints = RigidbodyConstraints2D.FreezeAll;
-            animator.SetBool("Death", true);
-            Destroy(this.gameObject, 2.0f);
-            this.enemyGenerator.NumOfSmallEnemies--;
-            Debug.Log(this.enemyGenerator.NumOfSmallEnemies);
+            Die();
         }
         else
         {
@@ -124,4 +125,16 @@ public abstract class Enemy : MonoBehaviour
         animator.SetBool("Hit", false);
     }
 
+    private void Die()
+    {   
+        Vector3 diePos = transform.position;
+
+        this.state = EnemyState.Die;
+        this.rb2D.constraints = RigidbodyConstraints2D.FreezeAll;
+        animator.SetBool("Death", true);
+        Destroy(this.gameObject, 2.0f);
+        Instantiate(coin, diePos, Quaternion.identity);// 掉落金币
+        this.enemyGenerator.NumOfSmallEnemies--;
+        Debug.Log("Enemy Left: " + this.enemyGenerator.NumOfSmallEnemies);
+    }
 }
