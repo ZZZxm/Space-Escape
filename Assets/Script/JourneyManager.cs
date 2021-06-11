@@ -49,6 +49,8 @@ public class JourneyManager : MonoBehaviour
 
    public int[] nowWear=new int[4]; //人物当前穿着防具,0表示没穿，1表示编号1
 
+   public int isWin;  //当前回合是否成功逃脱，0表示失败，1表示成功
+
    /*回合变量部分结束*/
 
    /*此处开始为关卡变量*/
@@ -375,6 +377,11 @@ public class JourneyManager : MonoBehaviour
     }
 
     public void GameOver(bool win)   //一个回合结束调用
+    {
+
+    }
+
+    public void StartJourney()  //从角色选择界面进入关卡界面调用
     {
 
     }
