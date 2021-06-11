@@ -99,7 +99,13 @@ public class EnemyGenerator : MonoBehaviour
         }
         else
         {
-            Vector3 pos = new Vector3(Random.Range(-13, 13), Random.Range(-13, 13), 0);
+            float playerX = player.transform.position.x;
+            int times = (int)((playerX + 13) / 49);
+            int x = Random.Range(-13, 13);
+            int y = Random.Range(-13, 13);
+            x += times * 49;
+
+            Vector3 pos = new Vector3(x, y, 0);
             RandomCreateASmallMonster(pos);
             NumOfSmallEnemies++;
             Debug.Log(NumOfSmallEnemies);
