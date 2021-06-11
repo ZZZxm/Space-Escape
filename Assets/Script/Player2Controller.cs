@@ -31,7 +31,9 @@ public class Player2Controller : PlayerController
         bomb.transform.position=new Vector3(Mathf.RoundToInt(transform.position.x+0.5f)-0.5f,Mathf.RoundToInt(transform.position.y));
         bomb.GetComponent<BombController>().Init(2,1);
     }
-    
-    
 
+    public override void dodge()
+    {
+        throw new System.NotImplementedException();
+    }
 }
