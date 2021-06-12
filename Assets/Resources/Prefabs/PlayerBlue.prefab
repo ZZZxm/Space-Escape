@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 5890554997309502209}
   - component: {fileID: 5890554997309502211}
   - component: {fileID: 5890554997309502208}
-  - component: {fileID: 5890554997309502210}
+  - component: {fileID: 610564306130283095}
   m_Layer: 10
   m_Name: PlayerBlue
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 5890554997309502268}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_Children:
   - {fileID: 5890554998059867629}
   m_Father: {fileID: 0}
@@ -92,7 +92,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 765040755
-  m_SortingLayer: 3
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 8793639957104055765, guid: 9c447c54c8e0416e9446cadb88c48fd3,
     type: 3}
@@ -137,7 +137,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.01362288, y: 0.7074193}
@@ -153,7 +153,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9982841, y: 1.3767412}
   m_EdgeRadius: 0
---- !u!114 &5890554997309502210
+--- !u!114 &610564306130283095
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,16 +162,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 5890554997309502268}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82b6eed98658d415592c614b30170dee, type: 3}
+  m_Script: {fileID: 11500000, guid: 73e440ce5cc1f4c96b4156de810ee4ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   blockingLayer:
     serializedVersion: 2
     m_Bits: 0
-  boxCollider: {fileID: 5890554997309502208}
-  rb2D: {fileID: 5890554997309502211}
+  boxCollider: {fileID: 0}
+  rb2D: {fileID: 0}
   speed: 10
-  flashPrefab: {fileID: 497072902593476643, guid: cefd02d3a9c544a14bcd8886478f0754,
+  totalBlood: 1000
+  currentBlood: 1000
+  bulletPrefab: {fileID: 0}
+  bombPrefab: {fileID: 9060229043443498362, guid: 003b46858be62434e879b86347498d6b,
     type: 3}
 --- !u!1 &5890554998059867626
 GameObject:
@@ -241,7 +244,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 765040755
-  m_SortingLayer: 3
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
