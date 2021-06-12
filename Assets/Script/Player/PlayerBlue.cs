@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player2Controller : PlayerController
+public class PlayerBlue : PlayerController
 {
     public GameObject bombPrefab;
     // Start is called before the first frame update
@@ -14,7 +14,7 @@ public class Player2Controller : PlayerController
         rb2D = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
+    protected void Update()
     {
         base.Update();
         float faceDirection = Input.GetAxisRaw("Horizontal");

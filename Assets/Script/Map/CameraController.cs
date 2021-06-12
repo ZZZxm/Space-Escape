@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    private GameObject player;
 
     private Transform playerPosition;
 
@@ -16,13 +17,21 @@ public class CameraController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
-        offset = transform.position - playerPosition.position;
+        getPlayerInfo();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (player == null)
+        {
+            getPlayerInfo();
+        }
+
+        if (player == null)
+        {
+            return;
+        }
 
         Vector3 targetPosition = playerPosition.position + playerPosition.TransformDirection(offset);
 
@@ -39,4 +48,15 @@ public class CameraController : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * cameraSpeed);
 
     }
+
+    private void getPlayerInfo()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
+            offset = transform.position - playerPosition.position;
+        }
+    }
+
 }

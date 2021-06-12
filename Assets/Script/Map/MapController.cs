@@ -37,8 +37,8 @@ public class MapController : MonoBehaviour
         wallLayer = tilemapLayers[1];
         propLayer = tilemapLayers[2];
 
-        wallTile = ScriptableObject.CreateInstance<Tile>();
-        wallTile.sprite = wallSprite;
+        boxTile = ScriptableObject.CreateInstance<Tile>();
+        boxTile.sprite = boxSprite;
         wallTile = ScriptableObject.CreateInstance<Tile>();
         wallTile.sprite = wallSprite;
         floorTile = ScriptableObject.CreateInstance<Tile>();
