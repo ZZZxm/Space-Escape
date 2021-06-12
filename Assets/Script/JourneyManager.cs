@@ -202,6 +202,7 @@ public class JourneyManager : MonoBehaviour
     {
         roomNumber += 1;
         tileStyle = (tileStyle + 1) % 2;
+        GameObject.FindGameObjectWithTag("JourneyManager").GetComponent<EnemyGenerator>().NumOfSmallEnemies = 0;
         // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         SceneManager.LoadScene("GameStart");
     }
