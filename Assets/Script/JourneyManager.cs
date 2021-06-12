@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 //游戏整体进程的控制类
-  //人物附加的全局变量如成就值或者在一个回合里的变量如金钱道具等都定义在这个类里
-    //全局变量一回合结束不清零，一回合里的变量回合结束时清零
-      //暂不清楚静态物体脚本中实例化的物体在场景切换时要不要destroy，先不考虑，后续有需要再加destroy部分
+//人物附加的全局变量如成就值或者在一个回合里的变量如金钱道具等都定义在这个类里
+//全局变量一回合结束不清零，一回合里的变量回合结束时清零
+//暂不清楚静态物体脚本中实例化的物体在场景切换时要不要destroy，先不考虑，后续有需要再加destroy部分
 /*
   属性:1. 静态实例
        2. 关卡控制类unitScript
@@ -61,6 +62,10 @@ public class JourneyManager : MonoBehaviour
 
    public float unitTime=0;  //当前关卡从进入开始所用时间，单位s,需手动调gameui更改
    public float enterTime=0; //记录当前关卡进入时的回合时间，方便相减得到关卡时间
+
+    public int roomNumber = 2;
+
+    public int tileStyle = 0;
    
    /*关卡变量部分结束*/
 
@@ -191,6 +196,14 @@ public class JourneyManager : MonoBehaviour
     void StartUnit(string name)  //选择游戏场景并进行初始化
     {
         //初始化该场景
+    }
+
+    public void reloadScene(string name)
+    {
+        roomNumber += 1;
+        tileStyle = (tileStyle + 1) % 2;
+        // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("GameStart");
     }
 
     void FinishUint(bool win)  //一个关卡结束

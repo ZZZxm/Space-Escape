@@ -18,6 +18,8 @@ public class GameMapGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        roomNumber = JourneyManager.getInstance().roomNumber;
+
         int[] roomBoxArr = new int[roomNumber];
         for (int i = 0; i < roomNumber; i++)
         {
@@ -44,6 +46,9 @@ public class GameMapGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            JourneyManager.getInstance().reloadScene("GameStart");
+        }
     }
 }

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Floor
+  m_Name: beachSandFloor
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 55302934aa12ad14f9d6e05d59399690, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 12a2eb8b685f5fc4887ef297a065f0b9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
