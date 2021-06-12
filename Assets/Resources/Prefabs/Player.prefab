@@ -72,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 765040755
-  m_SortingLayer: 5
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -113,17 +113,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 8675670866867672668}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d46b1cd998924dd6856e4b8062becc0, type: 3}
+  m_Script: {fileID: 11500000, guid: c1a5b94de33be44f89c48a695436b1a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   blockingLayer:
     serializedVersion: 2
-    m_Bits: 0
-  boxCollider: {fileID: 0}
-  rb2D: {fileID: 0}
-  speed: 10
-  totalBlood: 500
-  currentBlood: 500
+    m_Bits: 1024
+  boxCollider: {fileID: 8675670866867672669}
+  rb2D: {fileID: 8675670866867672670}
+  speed: 6
+  totalBlood: 100
+  currentBlood: 100
   bulletPrefab: {fileID: 358629844875776112, guid: b6a75433465d3432186795f901274b25,
     type: 3}
 --- !u!50 &8675670866867672670

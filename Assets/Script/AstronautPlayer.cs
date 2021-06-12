@@ -20,14 +20,8 @@ public class AstronautPlayer : PlayerController
         if (bc != null)
         {
             Debug.Log(lookDirection);
-            bc.Move(lookDirection, 2000);
+            bc.Move(lookDirection, 300);
         }
         //throw new System.NotImplementedException();
-    }
-
-    public override void dodge()
-    {
-        rb2D.MovePosition(rb2D.position - lookDirection * 2 * speed * 1000);
-        Debug.Log("Dodge!");
     }
 }
