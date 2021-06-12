@@ -86,7 +86,12 @@ public class EnemyGenerator : MonoBehaviour
 
     private void CreateSmallMonster()
     {
-        if (NumOfSmallEnemies >= EnemyGenerator.MAX_ENEMIES)
+        if (player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+        }
+        
+        if (player == null || NumOfSmallEnemies >= EnemyGenerator.MAX_ENEMIES)
         {
             return;
         }
