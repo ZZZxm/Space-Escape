@@ -3,7 +3,12 @@ guid: 82b6eed98658d415592c614b30170dee
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - boxCollider: {instanceID: 0}
+  - rb2D: {instanceID: 0}
+  - bulletPrefab: {instanceID: 0}
+  - bombPrefab: {fileID: 9060229043443498362, guid: 003b46858be62434e879b86347498d6b,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
