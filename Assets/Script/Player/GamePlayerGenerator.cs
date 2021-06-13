@@ -6,12 +6,13 @@ public class GamePlayerGenerator : MonoBehaviour
 {
     public GameObject player;
     public GameObject playerBlue;
-    public bool astro = true;
+    private int playerInfo;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (astro)
+        playerInfo=JourneyManager.getInstance().playerInfo;
+        if (playerInfo%2==1)
         {
             Instantiate(player, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
         }

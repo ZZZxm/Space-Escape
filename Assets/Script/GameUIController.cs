@@ -35,11 +35,38 @@ public class GameUIController : MonoBehaviour
 
     public DropdownList[] dropdowns=new DropdownList[4];
 
+    public OpenBox openBox;
+
     void Awake() 
     {
       Instantiate(gameUI);
+      JourneyManager.getInstance().gameUIScript=this;
      
     }
+    private void Start() {
+      StartCoroutine(Timer()); //计时开始
+    }
+
+  IEnumerator Timer() 
+  {           //计时器
+    while (true) {
+        yield return new WaitForSeconds(1.0f);
+        JourneyManager.getInstance().unitTime++;   
+        JourneyManager.getInstance().playTime++; 
+        ChangePlayTime();
+        ChangeUnitTime();
+        if(JourneyManager.getInstance().winCase==2&&JourneyManager.getInstance().unitTime==30)
+        {
+          GameObject root = GameObject.Find("UnitCanvas(Clone)");
+          GameObject uw=root.transform.Find("UnitWin").gameObject;
+          uw.SetActive(true);
+          Time.timeScale=0.0f;
+        }
+    }
+  }
+  private void OnDestroy() {
+    StopCoroutine(Timer());
+  }
     public void Init()  //初始化
     {
       //实例化代码
@@ -121,4 +148,10 @@ public class GameUIController : MonoBehaviour
         dropdowns[i].Clear();
       }
     }
+
+    public void ChangeOpenBox(string txt)
+    {
+      openBox.ChangeTo(txt);
+    }
+   
 }

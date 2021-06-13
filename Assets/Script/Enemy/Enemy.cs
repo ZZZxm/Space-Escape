@@ -41,7 +41,7 @@ public abstract class Enemy : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rb2D = GetComponent<Rigidbody2D>();
-        enemyGenerator = GameObject.FindGameObjectWithTag("JourneyManager").GetComponent<EnemyGenerator>();
+        enemyGenerator = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<EnemyGenerator>();
         state = EnemyState.Walk;
         // 设置AI寻路目标
         target = GameObject.FindGameObjectWithTag("Player").transform;

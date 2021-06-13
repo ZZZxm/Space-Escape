@@ -7,6 +7,7 @@ TagManager:
   - BombEffect
   - Enemy
   - JourneyManager
+  - EnemyGenerator
   layers:
   - Default
   - TransparentFX
