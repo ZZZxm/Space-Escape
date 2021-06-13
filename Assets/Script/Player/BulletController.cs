@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    Rigidbody2D rb2D;
+    protected Rigidbody2D rb2D;
 
     // Start is called before the first frame update
     void Awake()

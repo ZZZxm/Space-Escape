@@ -15,7 +15,7 @@ public abstract class PlayerController : MonoBehaviour
     public int totalBlood;
     public int currentBlood;
     private bool bDodge;
-    public GameObject bulletPrefab;
+    
     protected Vector2 lookDirection = new Vector2(0, -1);
 
     // Start is called before the first frame update
@@ -68,6 +68,16 @@ public abstract class PlayerController : MonoBehaviour
             animator.SetTrigger("Duck");
             StartCoroutine("DelayNoDodge", 0.3);
         }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            qSkill();
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            eSkill();
+        }
     }
 
     private void FixedUpdate()
@@ -104,7 +114,10 @@ public abstract class PlayerController : MonoBehaviour
     }
 
     public abstract void normalAttack();
-    public abstract void dodge();
+
+    public abstract void qSkill();
+
+    public abstract void eSkill();
 
     IEnumerator DelayNoDodge(float time)
     {

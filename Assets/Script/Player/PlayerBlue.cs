@@ -32,7 +32,12 @@ public class PlayerBlue : PlayerController
         bomb.GetComponent<BombController>().Init(2,1);
     }
 
-    public override void dodge()
+    public override void qSkill()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void eSkill()
     {
         throw new System.NotImplementedException();
     }
