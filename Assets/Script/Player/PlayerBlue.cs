@@ -8,6 +8,8 @@ public class PlayerBlue : PlayerController
     public GameObject bombPrefab;
 
     private Boolean cool=false;
+
+    private Boolean consecutive = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +32,7 @@ public class PlayerBlue : PlayerController
 
     private void Attack(int range,Boolean consecutive=false)
     {
-        if (cool==false)
+        if (cool==false|| this.consecutive)
         {
             if (!consecutive)
             {
@@ -54,7 +56,7 @@ public class PlayerBlue : PlayerController
 
     public override void normalAttack()
     {
-        Attack(1);
+        Attack(1,consecutive);
     }
 
     public override void qSkill()
@@ -64,7 +66,8 @@ public class PlayerBlue : PlayerController
 
     public override void eSkill()
     {
-        Attack(1,true);
+        consecutive = true;
+        StartCoroutine("UnsetCon", 2);
     }
     
     IEnumerator CanAttack(int time)
@@ -72,4 +75,12 @@ public class PlayerBlue : PlayerController
         yield return new WaitForSeconds(time);
         cool = false;
     }
+    
+    IEnumerator UnsetCon(int time)
+    {
+        yield return new WaitForSeconds(time);
+        consecutive = false;
+    }
+    
+    
 }
