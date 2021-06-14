@@ -411,6 +411,18 @@ public class JourneyManager : MonoBehaviour
         gameUIScript.ChangeDrop(i,j+1);
     }
 
+    public void ChangeClothes(int i)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            if (!clothes[i,j])
+            {
+                ChangeClothes(i, j);
+                return;
+            }
+        }
+    }
+
     public void OpenBox(string txt)
     {
         gameUIScript.ChangeOpenBox(txt);
