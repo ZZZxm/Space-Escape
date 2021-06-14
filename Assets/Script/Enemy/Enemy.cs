@@ -146,6 +146,7 @@ public abstract class Enemy : MonoBehaviour
         Debug.Log("Enemy Left: " + this.enemyGenerator.NumOfSmallEnemies);
     }
 
+    // 随机生成掉落物品
     private void DropProps(Vector3 pos)
     {
         int seed = Random.Range(0, 10);

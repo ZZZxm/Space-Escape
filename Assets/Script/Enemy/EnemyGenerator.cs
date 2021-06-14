@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 
 public enum GameMode 
@@ -81,7 +82,37 @@ public class EnemyGenerator : MonoBehaviour
 
     public void SetGameMode(GameMode gameMode)
     {
+        CancelInvoke();
         this.gameMode = gameMode;
+        // 根据不同模式设置敌人出现机制
+        switch (gameMode)
+        {
+            case GameMode.BeatAll:
+            {
+                BeatAll();
+                break;
+            }
+            case GameMode.Survival:
+            {
+                Survival();
+                break;
+            }
+            case GameMode.TreasureAll:
+            {
+                TreasureAll();
+                break;
+            }
+            case GameMode.Boss:
+            {
+                Boss();
+                break;
+            }
+            default:
+            {
+                Debug.LogWarning("You haven't set the game mode yet.");
+                break;
+            }
+        }
     }
 
     private void CreateSmallMonster()
@@ -119,14 +150,19 @@ public class EnemyGenerator : MonoBehaviour
 
     private void BeatAll()
     {
-        
+        intervalTime = 5.0f;
+        MAX_ENEMIES = 15;
+        InvokeRepeating("CreateSmallMonster", 0.5f, intervalTime);
     }
 
     private void Survival()
     {
         // 生存模式，在限定时间内不断生成怪物
-        // 玩家存活一定时间即通关
+        // 玩家存活一定时间即通关 
+        intervalTime = 3.0f;
+        MAX_ENEMIES = 100;
         InvokeRepeating("CreateSmallMonster", 0.5f, intervalTime);
+        InvokeRepeating("SetEnemyActive", 0.5f, intervalTime);
     }
 
     private void TreasureAll()
@@ -157,6 +193,15 @@ public class EnemyGenerator : MonoBehaviour
                 Instantiate(greenMonster, pos, Quaternion.identity);
                 break;
             }
+        }
+    }
+
+    private void SetEnemyActive()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            enemies[i].GetComponent<AIDestinationSetter>().enabled = true;
         }
     }
 }
