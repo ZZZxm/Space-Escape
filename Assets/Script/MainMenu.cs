@@ -20,7 +20,7 @@ public class MainMenu : MonoBehaviour
 
     public void NewGame()  //新游戏
     {
-        SceneManager.LoadScene("GameStart");
+        SceneManager.LoadScene("RoleSelect");
     }
 
     public void LoadGame()  //加载游戏

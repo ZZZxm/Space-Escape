@@ -14,8 +14,9 @@ public class RoleInitial : MonoBehaviour
     void Start()
     {
         money.text=JourneyManager.getInstance().money.ToString();
-        cost.text="";
+        cost.text="0";
         inform.text="";
+        JourneyManager.getInstance().playerInfo=0;
     }
 
     public void OnClickStart()
