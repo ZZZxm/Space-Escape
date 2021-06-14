@@ -9,15 +9,16 @@ public class MapController : MonoBehaviour
     private Sprite wallSprite;
     private Sprite floorSprite;
     public Sprite boxSprite;
+    public Sprite trapSprite;
 
     public List<Sprite> wallSpriteList;
     public List<Sprite> floorSpriteList;
 
     private Grid grid;
     private Tilemap[] tilemapLayers;
-    private Tilemap groundLayer, wallLayer, propLayer;
+    private Tilemap groundLayer, wallLayer, propLayer, trapLayer;
 
-    private Tile wallTile, floorTile, boxTile;
+    private Tile wallTile, floorTile, boxTile, trapTile;
 
     public bool hasLeftEdge = false;
     public bool hasRightEdge = false;
@@ -26,7 +27,6 @@ public class MapController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         curStyle = JourneyManager.getInstance().tileStyle;
         wallSprite = wallSpriteList[curStyle];
         floorSprite = floorSpriteList[curStyle];
@@ -36,6 +36,7 @@ public class MapController : MonoBehaviour
         groundLayer = tilemapLayers[0];
         wallLayer = tilemapLayers[1];
         propLayer = tilemapLayers[2];
+        trapLayer = tilemapLayers[3];
 
         boxTile = ScriptableObject.CreateInstance<Tile>();
         boxTile.sprite = boxSprite;
@@ -43,6 +44,8 @@ public class MapController : MonoBehaviour
         wallTile.sprite = wallSprite;
         floorTile = ScriptableObject.CreateInstance<Tile>();
         floorTile.sprite = floorSprite;
+        trapTile = ScriptableObject.CreateInstance<Tile>();
+        trapTile.sprite = trapSprite;
 
         initTiles();
 
@@ -82,6 +85,9 @@ public class MapController : MonoBehaviour
             addEdge(false);
         }
 
+        // Debug.Log("start trap");
+        InvokeRepeating("addTrap", 1, 5);
+
     }
 
     // Update is called once per frame
@@ -98,7 +104,7 @@ public class MapController : MonoBehaviour
             {
                 int curX = x + p;
                 int curY = y + q;
-                if (wallLayer.HasTile(new Vector3Int(curX, curY, 0)) || propLayer.HasTile(new Vector3Int(curX, curY, 0)))
+                if (wallLayer.HasTile(new Vector3Int(curX, curY, 0)) || propLayer.HasTile(new Vector3Int(curX, curY, 0)) || trapLayer.HasTile(new Vector3Int(curX, curY, 0)))
                 {
                     return false;
                 }
@@ -170,6 +176,18 @@ public class MapController : MonoBehaviour
                     wallLayer.SetTile(new Vector3Int(curPos, j, 0), null);
                 }
             }
+        }
+    }
+
+    public void addTrap()
+    {
+        // Debug.Log("add trap");
+        int xPos = Random.Range(-15, 15);
+        int yPos = Random.Range(-15, 15);
+
+        if (checkPixelAvailable(xPos, yPos))
+        {
+            trapLayer.SetTile(new Vector3Int(xPos, yPos, 0), trapTile);
         }
     }
 }
