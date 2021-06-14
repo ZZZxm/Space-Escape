@@ -28,7 +28,7 @@ public class GameOvershow : MonoBehaviour
         journey.text=journeys.ToString();
         unit.text=units.ToString();
        // money.text=JourneyManager.getInstance().money.ToString();
-        time.text=times.ToString();
+        time.text=times.ToString()+"s";
         if(win==1)
         {
             moneys+=300;
@@ -41,7 +41,7 @@ public class GameOvershow : MonoBehaviour
             moneys+=units*10;
         }
         JourneyManager.getInstance().money+=moneys;
-        money.text=JourneyManager.getInstance().money.ToString();
+        money.text=moneys.ToString();
     }
 
 }
