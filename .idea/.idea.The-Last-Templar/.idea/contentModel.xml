@@ -259,8 +259,12 @@
             <e p="BulletLargeController.cs" t="Include" />
             <e p="ExplodeController.cs" t="Include" />
             <e p="GamePlayerGenerator.cs" t="Include" />
+            <e p="PlayerAttackDown.cs" t="Include" />
+            <e p="PlayerAttackSide.cs" t="Include" />
+            <e p="PlayerAttackUp.cs" t="Include" />
             <e p="PlayerBlue.cs" t="Include" />
             <e p="PlayerController.cs" t="Include" />
+            <e p="PlayerSword.cs" t="Include" />
           </e>
           <e p="PlayerGenerator.cs" t="Include" />
           <e p="PlayerNum.cs" t="Include" />

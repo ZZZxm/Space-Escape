@@ -59,6 +59,7 @@ public abstract class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             normalAttack();
+            animator.SetTrigger("Attack");
             Debug.Log("normal attack");
         }
 
@@ -101,7 +102,7 @@ public abstract class PlayerController : MonoBehaviour
         }
         
         this.currentBlood -= deltaBlood;
-        JourneyManager.getInstance().ChangePlayerHP(-deltaBlood);
+        // JourneyManager.getInstance().ChangePlayerHP(-deltaBlood);
         animator.SetTrigger("Hit");
         Debug.Log("Player blood left: " + currentBlood);
     }
