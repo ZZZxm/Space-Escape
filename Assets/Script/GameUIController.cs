@@ -57,10 +57,11 @@ public class GameUIController : MonoBehaviour
         ChangeUnitTime();
         if(JourneyManager.getInstance().winCase==2&&JourneyManager.getInstance().unitTime==30)
         {
-          GameObject root = GameObject.Find("UnitCanvas(Clone)");
-          GameObject uw=root.transform.Find("UnitWin").gameObject;
-          uw.SetActive(true);
-          Time.timeScale=0.0f;
+          // GameObject root = GameObject.Find("UnitCanvas(Clone)");
+          // GameObject uw=root.transform.Find("UnitWin").gameObject;
+          // uw.SetActive(true);
+          // Time.timeScale=0.0f;
+          JourneyManager.getInstance().UnitOverToNextLevel();
         }
     }
   }

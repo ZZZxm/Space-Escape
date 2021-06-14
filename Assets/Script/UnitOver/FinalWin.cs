@@ -8,6 +8,6 @@ public class FinalWin : MonoBehaviour
   public void OnClickButton()
    {
        Time.timeScale=1.0f;
-             // JourneyManager.getInstance().nextLevel();
+       JourneyManager.getInstance().nextJourney();
    }
 }

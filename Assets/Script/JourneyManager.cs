@@ -60,7 +60,7 @@ public class JourneyManager : MonoBehaviour
    public int boxNum=0;  //当前关卡剩余宝箱数
    public int winCase=0;  //当前关卡胜利条件，需手动调gameui更改
 
-   public bool canOut=false; //能否通过关卡出口进入下一关，无Ui
+   //public bool canOut=false; //能否通过关卡出口进入下一关，无Ui
 
    public float unitTime=0;  //当前关卡从进入开始所用时间，单位s,需手动调gameui更改
 
@@ -85,6 +85,8 @@ public class JourneyManager : MonoBehaviour
         //Sets this to not be destroyed when reloading scene
         DontDestroyOnLoad(gameObject);
         /* ---------------------------         JourneyManager一些属性的初始化     ------------------------------------      */
+        unitNum=1;
+        playNum=1;
         //道具数量初始化
         items[0]=5;
         items[1]=5;
@@ -160,6 +162,33 @@ public class JourneyManager : MonoBehaviour
         //gameUIScript = GetComponent<GameUIController>();
     }
 
+    public void ResetJourneyManager()  //回合之间切换一些变量的重置
+    {
+        //道具数量初始化
+        items[0]=0;
+        items[1]=0;
+        items[2]=0;
+        items[3]=0;
+
+        //拥有防具数量初始化
+        for(int i=0;i<4;++i)
+        {
+            for(int j=0;j<4;++j)
+            {
+                clothes[i,j]=false;
+            }
+        }
+
+        //人物属性初始化
+        atts[0]=100;
+        atts[1]=100;
+        atts[2]=100;
+        atts[3]=100;
+        playerHPMax=atts[0];
+        playerCurHP=playerHPMax;
+        playerMPMax=atts[1];
+        playerCurMP=playerMPMax;
+    }
     public void InitializedWithClothes()  //四属性及血蓝量的初始化
     {
          
@@ -386,9 +415,34 @@ public class JourneyManager : MonoBehaviour
     {
         gameUIScript.ChangeOpenBox(txt);
     }
+
+    public void UnitOverToNextLevel()  //从一个关卡进入下一个关卡调用
+    {
+        GameObject root = GameObject.Find("UnitCanvas(Clone)");
+        GameObject uw=root.transform.Find("UnitWin").gameObject;
+        uw.SetActive(true);
+        Time.timeScale=0.0f;
+
+    }
     public void GameOver(bool win)   //一个回合结束调用
     {
-
+        if(win)
+        {
+            isWin=1;
+            GameObject root = GameObject.Find("UnitCanvas(Clone)");
+            GameObject uw=root.transform.Find("FianlWin").gameObject;
+            uw.SetActive(true);
+            Time.timeScale=0.0f;
+            //nextJourney();
+        }
+        else{
+            isWin=0;
+            GameObject root = GameObject.Find("UnitCanvas(Clone)");
+            GameObject uw=root.transform.Find("UnitLose").gameObject;
+            uw.SetActive(true);
+            Time.timeScale=0.0f;
+           // nextJourney();
+        }
     }
 
     public void StartJourney()  //从角色选择界面进入关卡界面调用
@@ -407,8 +461,19 @@ public class JourneyManager : MonoBehaviour
 
     public void nextLevel()  //进入下一关
     {
+        //关卡变量重置
         roomNumber+=1;
         tileStyle=(tileStyle+1)%2;
+        unitTime=0;
+        //关卡变量重置
+        unitNum++;//关卡数+1
+        if(unitNum!=9)
+        {
+            winCase = Random.Range(0, 3);
+        }
+        else{
+            winCase=0;
+        }
         if(winCase==1)
         {
             boxNum=10;
@@ -416,8 +481,32 @@ public class JourneyManager : MonoBehaviour
         else{
             boxNum=3;
         }
-        unitTime=0;
         reloadScene("GameStart");
+    }
+
+    public void nextJourney()  //进入下一回合
+    {
+        //关卡变量部分重置
+        roomNumber+=1;
+        tileStyle=(tileStyle+1)%2;
+        unitTime=0;
+        if(unitNum!=9)
+        {
+            winCase = Random.Range(0, 3);
+        }
+        else{
+            winCase=0;
+        }
+        if(winCase==1)
+        {
+            boxNum=10;
+        }
+        else{
+            boxNum=3;
+        }
+        //回合变量部分重置
+        ResetJourneyManager();
+       SceneManager.LoadScene("GameOver");
     }
 
     public void DestroyThis()
