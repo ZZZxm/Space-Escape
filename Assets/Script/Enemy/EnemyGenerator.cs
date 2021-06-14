@@ -44,6 +44,26 @@ public class EnemyGenerator : MonoBehaviour
         greenMonster = (GameObject)Resources.Load("Prefabs/Enemy/Green Monster");
         boss = (GameObject)Resources.Load("Prefabs/Enemy/Boss");
 
+
+        switch (JourneyManager.getInstance().winCase)
+        {
+            case 0:
+            {
+                gameMode = GameMode.BeatAll;
+                break;
+            }
+            case 1:
+            {
+                gameMode = GameMode.TreasureAll;
+                break;
+            }
+            case 2:
+            {
+                gameMode = GameMode.Survival;
+                break;
+            }
+        }
+
         // 根据不同模式设置敌人出现机制
         switch (gameMode)
         {
@@ -150,6 +170,7 @@ public class EnemyGenerator : MonoBehaviour
 
     private void BeatAll()
     {
+        // 击败所有敌人
         intervalTime = 5.0f;
         MAX_ENEMIES = 15;
         InvokeRepeating("CreateSmallMonster", 0.5f, intervalTime);
@@ -159,15 +180,18 @@ public class EnemyGenerator : MonoBehaviour
     {
         // 生存模式，在限定时间内不断生成怪物
         // 玩家存活一定时间即通关 
-        intervalTime = 3.0f;
+        intervalTime = 1.0f;
         MAX_ENEMIES = 100;
         InvokeRepeating("CreateSmallMonster", 0.5f, intervalTime);
-        InvokeRepeating("SetEnemyActive", 0.5f, intervalTime);
+        InvokeRepeating("SetEnemyActive", 0.5f, intervalTime / 3);
     }
 
     private void TreasureAll()
     {
-
+        // 击败所有敌人
+        intervalTime = 5.0f;
+        MAX_ENEMIES = 15;
+        InvokeRepeating("CreateSmallMonster", 0.5f, intervalTime);
     }
 
     private void Boss()

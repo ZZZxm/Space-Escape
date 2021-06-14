@@ -82,7 +82,7 @@ public abstract class Enemy : MonoBehaviour
         }
         else
         {
-            AIPath.enabled = false;
+            // AIPath.enabled = false;
             animator.SetBool("Run", false);
         }
 

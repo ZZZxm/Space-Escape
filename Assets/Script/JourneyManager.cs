@@ -30,6 +30,8 @@ public class JourneyManager : MonoBehaviour
 
    public int[] ITEMPOWER=new int[4];  //四种道具的作用效果存储在数组里 四种道具:回血、回蓝、加敏捷值、加耐力值【一一对应】
 
+   public EnemyGenerator enemyGenerator;
+
    /*全局变量部分结束*/
 
    /*此处开始为回合变量*/
@@ -462,6 +464,7 @@ public class JourneyManager : MonoBehaviour
         SceneManager.LoadScene("GameStart");
         SceneManager.sceneLoaded += CallBack1;
     }
+
     public void CallBack1(Scene scene, LoadSceneMode sceneType)
     {
         Debug.Log(scene.name + " is load complete!");
@@ -474,6 +477,7 @@ public class JourneyManager : MonoBehaviour
     public void nextLevel()  //进入下一关
     {
         //关卡变量重置
+        enemyGenerator = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<EnemyGenerator>();
         roomNumber+=1;
         tileStyle=(tileStyle+1)%2;
         unitTime=0;
@@ -482,6 +486,25 @@ public class JourneyManager : MonoBehaviour
         if(unitNum!=9)
         {
             winCase = Random.Range(0, 3);
+            // 根据wincase设置敌人生成
+            switch (winCase)
+            {
+                case 0:
+                {
+                    enemyGenerator.SetGameMode(GameMode.BeatAll);
+                    break;
+                }
+                case 1:
+                {
+                    enemyGenerator.SetGameMode(GameMode.TreasureAll);
+                    break;
+                }
+                case 2:
+                {
+                    enemyGenerator.SetGameMode(GameMode.Survival);
+                    break;
+                }
+            }
         }
         else{
             winCase=0;
