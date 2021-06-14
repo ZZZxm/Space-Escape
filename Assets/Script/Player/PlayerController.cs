@@ -85,12 +85,10 @@ public abstract class PlayerController : MonoBehaviour
         if (bDodge)
         {
             rb2D.MovePosition(rb2D.position - 2 * lookDirection * speed * Time.fixedDeltaTime);
-            Debug.Log("DODGE");
         }
         else
         {
             rb2D.MovePosition(rb2D.position + movement * speed * Time.fixedDeltaTime);
-            Debug.Log("NO!!");
         }
     }
 
