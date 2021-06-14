@@ -45,6 +45,7 @@ public class RoleSelect : MonoBehaviour
         if(value)
         {
             cost.text=costs.ToString();
+            JourneyManager.getInstance().playerInfo=i;
         }
         inform.text="";
     }

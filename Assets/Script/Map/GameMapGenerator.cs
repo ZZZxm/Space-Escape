@@ -19,6 +19,7 @@ public class GameMapGenerator : MonoBehaviour
     void Start()
     {
         roomNumber = JourneyManager.getInstance().roomNumber;
+        totalBoxNumber = JourneyManager.getInstance().boxNum;
 
         int[] roomBoxArr = new int[roomNumber];
         for (int i = 0; i < roomNumber; i++)
