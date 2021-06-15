@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5890554997309502211}
   - component: {fileID: 5890554997309502208}
   - component: {fileID: 610564306130283095}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: PlayerBlue
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -185,7 +185,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5890554998059867629}
   - component: {fileID: 5890554998059867628}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

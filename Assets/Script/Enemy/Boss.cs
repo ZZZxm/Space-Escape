@@ -12,7 +12,7 @@ public class Boss : Enemy
     {
         base.Start();
         // 怪物属性设置
-        int bonus = JourneyManager.getInstance().playNum;
+        int bonus = JourneyManager.getInstance().winNum;
 
         this.maxBlood = 1000 + bonus * 500;
         this.blood = this.maxBlood;

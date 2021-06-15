@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7147808810318894404}
   - component: {fileID: 7147808810318894402}
   - component: {fileID: 7147808810318894405}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: AttackDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 7147808810363165457}
   - component: {fileID: 7147808810363165486}
   - component: {fileID: 7147808810363165487}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: AttackUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 7147808810858649124}
   - component: {fileID: 7147808810858649125}
   - component: {fileID: 7147808810858649122}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: AttackSide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 7147808811277709244}
   - component: {fileID: 7147808811277709247}
   - component: {fileID: 7147808811277709246}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: PlayerSword
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -341,7 +341,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.010898113, y: 0.20708236}
+  m_Offset: {x: 0.010898113, y: 0.6268816}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.1}
@@ -352,7 +352,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.61575675, y: 0.33682555}
+  m_Size: {x: 0.61575675, y: 1.176424}
   m_EdgeRadius: 0
 --- !u!50 &7147808811277709247
 Rigidbody2D:
