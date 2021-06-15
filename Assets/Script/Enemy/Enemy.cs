@@ -105,7 +105,7 @@ public abstract class Enemy : MonoBehaviour
     {
         if (other.CompareTag("BombEffect"))
         {
-            hurt(GameObject.FindGameObjectWithTag("BombEffect").GetComponent<ExplodeController>().attack);
+            hurt(JourneyManager.getInstance().atts[2]/4);
         }
     }
 

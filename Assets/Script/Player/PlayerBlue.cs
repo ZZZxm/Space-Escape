@@ -11,6 +11,12 @@ public class PlayerBlue : PlayerController
 
     private Boolean consecutive = false;
     // Start is called before the first frame update
+    new private void Awake()
+    {
+        base.Awake();
+        this.deltaEMP = 3;
+        this.deltaQMP = 5;
+    }
     void Start()
     {
         //Get a component reference to the Player's animator component
@@ -20,7 +26,7 @@ public class PlayerBlue : PlayerController
         cool = false;
     }
 
-    protected void Update()
+    new protected void Update()
     {
         base.Update();
         float faceDirection = Input.GetAxisRaw("Horizontal");
@@ -61,13 +67,23 @@ public class PlayerBlue : PlayerController
 
     public override void qSkill()
     {
-        Attack(3);
+        if (this.curMP - deltaQMP >= 0)
+        {
+            this.curMP -= deltaQMP;
+            JourneyManager.getInstance().ChangePlayerMP(-deltaQMP);
+            Attack(3);
+        }
     }
 
     public override void eSkill()
     {
-        consecutive = true;
-        StartCoroutine("UnsetCon", 2);
+        if (this.curMP - deltaEMP >= 0)
+        {
+            this.curMP -= deltaEMP;
+            JourneyManager.getInstance().ChangePlayerMP(-deltaEMP);
+            consecutive = true;
+            StartCoroutine("UnsetCon", 2);
+        }
     }
     
     IEnumerator CanAttack(int time)

@@ -106,7 +106,12 @@ public class DropdownList : MonoBehaviour
        JourneyManager.getInstance().ChangeAtts(1,changeMP-nowMP);
        JourneyManager.getInstance().ChangeAtts(2,changeAgile-nowAgile);
        JourneyManager.getInstance().ChangeAtts(3,changePatience-nowPatience);
+       JourneyManager.getInstance().playerController.hpMax();
+        JourneyManager.getInstance().playerController.mpMax();
+        JourneyManager.getInstance().playerController.addPower();
+        JourneyManager.getInstance().playerController.addPatience();
 
 
-   }
+
+    }
 }

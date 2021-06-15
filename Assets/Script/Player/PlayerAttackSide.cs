@@ -19,7 +19,7 @@ public class PlayerAttackSide : MonoBehaviour
         if (enemy != null)
         {
             Debug.Log("hit enemy!");
-            enemy.hurt(attack);
+            enemy.hurt(JourneyManager.getInstance().atts[2] * 2);
         }
     }
 }
