@@ -24,6 +24,9 @@ public class HPbar : MonoBehaviour
    {
         int chp=JourneyManager.getInstance().playerCurHP;
         int mhp=JourneyManager.getInstance().playerHPMax;
+
+        Debug.Log("MHP: " + mhp);
+        Debug.Log("CHP: " + chp);
         HP.fillAmount= (float)chp / (float)mhp;
         HPtxt.text=chp.ToString()+"/"+mhp.ToString();
    }

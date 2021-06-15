@@ -47,7 +47,7 @@ public class GameMapGenerator : MonoBehaviour
         {
             for (int j = 0; j < 4; j++)
             {
-                Debug.Log(j);
+                //Debug.Log(j);
                 hasPath[i, j] = 0;
             }
         }
