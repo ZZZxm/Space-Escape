@@ -12,10 +12,12 @@ public class Boss : Enemy
     {
         base.Start();
         // 怪物属性设置
-        this.maxBlood = 5000;
+        int bonus = JourneyManager.getInstance().playNum;
+
+        this.maxBlood = 5000 + bonus * 500;
         this.blood = this.maxBlood;
-        this.attack = 100;
-        this.defend = 100;
+        this.attack = 100 + bonus * 10;
+        this.defend = 100 + bonus * 10;
         this.viewRadius = 70.0f;
     }
 

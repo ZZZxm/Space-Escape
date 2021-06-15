@@ -114,7 +114,7 @@ public abstract class Enemy : MonoBehaviour
     {   
         animator.SetBool("Hit", true);
 
-        blood -= deltaBlood;
+        blood -= (deltaBlood - defend);
         slider.value = (float)blood / (float)maxBlood;
 
         if (blood <= 0 && !(this.state == EnemyState.Die))
