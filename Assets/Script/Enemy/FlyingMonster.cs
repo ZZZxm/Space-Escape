@@ -12,7 +12,7 @@ public class FlyingMonster : Enemy
 {
 
     private float attackRange = 2.0f;// 攻击范围长度
-    private float attackWidth = 1.0f;// 攻击范围宽度
+    private float attackWidth = 3.0f;// 攻击范围宽度
 
 
     new void Start()
@@ -24,7 +24,7 @@ public class FlyingMonster : Enemy
         this.maxBlood = 500 + bonus * 50;
         this.blood = this.maxBlood;
         this.attack = 50 + bonus * 5;
-        this.defend = 20 + bonus * 3;
+        this.defend = 0;
         this.viewRadius = 40.0f;
     }
 
@@ -35,7 +35,9 @@ public class FlyingMonster : Enemy
         Vector3 dir = target.position - transform.position;
         float forwardDistance = Vector3.Dot(dir, transform.forward.normalized);
         float rightDistance = Vector3.Dot(dir, transform.right.normalized);
-
+        Debug.Log("Flying Attack");
+        Debug.Log("FD: " + forwardDistance);
+        Debug.Log("RD: " + rightDistance);
         if (Mathf.Abs(forwardDistance) <= attackRange && Mathf.Abs(rightDistance) <= attackWidth) 
         {
             // 在攻击范围内

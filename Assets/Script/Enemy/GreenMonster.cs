@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GreenMonster : Enemy
 {
-    public float attackRadius = 2.0f;
+    public float attackRadius = 3.0f;
     
     new void Start()
     {
@@ -15,7 +15,7 @@ public class GreenMonster : Enemy
         this.maxBlood = 500 + bonus * 40;
         this.blood = this.maxBlood;
         this.attack = 40 + bonus * 7;
-        this.defend = 30 + bonus * 3;
+        this.defend = 0;
         this.viewRadius = 50.0f;
     }
 
