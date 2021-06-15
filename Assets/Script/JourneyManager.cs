@@ -113,7 +113,7 @@ public class JourneyManager : MonoBehaviour
         clothes[0, 2] = true;
         clothes[0, 3] = true;
         //穿着防具初始化
-        nowWear[0] = 1;
+        nowWear[0] = 0;
         nowWear[1] = 0;
         nowWear[2] = 0;
         nowWear[3] = 0;
@@ -155,7 +155,7 @@ public class JourneyManager : MonoBehaviour
             CLOTHMAP[3, j].Add("Patience", 0);
         }
         //四属性及血蓝量的初始化 必须在防具属性初始化之后
-        InitializedWithClothes();
+        //InitializedWithClothes();
         //四种道具效果初始化
         ITEMPOWER[0] = 5;
         ITEMPOWER[1] = 5;

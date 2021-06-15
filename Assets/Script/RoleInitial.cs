@@ -17,6 +17,12 @@ public class RoleInitial : MonoBehaviour
         cost.text="0";
         inform.text="";
         JourneyManager.getInstance().playerInfo=0;
+         JourneyManager.getInstance().playerHPMax = 500;
+                    JourneyManager.getInstance().atts[0] = JourneyManager.getInstance().playerHPMax;
+                    JourneyManager.getInstance().playerCurHP = JourneyManager.getInstance().playerHPMax;
+                    JourneyManager.getInstance().playerMPMax = 200;
+                    JourneyManager.getInstance().atts[1] = JourneyManager.getInstance().playerMPMax;
+                    JourneyManager.getInstance().playerCurMP = JourneyManager.getInstance().playerMPMax;
     }
 
     public void OnClickStart()
