@@ -155,7 +155,7 @@ public class JourneyManager : MonoBehaviour
             CLOTHMAP[3, j].Add("Patience", 0);
         }
         //四属性及血蓝量的初始化 必须在防具属性初始化之后
-        //InitializedWithClothes();
+        InitializedWithClothes();
         //四种道具效果初始化
         ITEMPOWER[0] = 50;
         ITEMPOWER[1] = 50;
@@ -169,11 +169,6 @@ public class JourneyManager : MonoBehaviour
         /*  --------------------------------        JourneyManager一些属性的初始化     ----------------------------------      */
         unitScript = GetComponent<UnitManager>();
         //gameUIScript = GetComponent<GameUIController>();
-        
-        atts[0] = 100;
-        atts[1] = 100;
-        atts[2] = 100;
-        atts[3] = 100;
     }
 
     public void ResetJourneyManager()  //回合之间切换一些变量的重置
