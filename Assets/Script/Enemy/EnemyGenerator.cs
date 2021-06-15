@@ -184,7 +184,7 @@ public class EnemyGenerator : MonoBehaviour
     {
         // 生存模式，在限定时间内不断生成怪物
         // 玩家存活一定时间即通关 
-        intervalTime = 1.0f;
+        intervalTime = 2.0f;
         MAX_ENEMIES = 100;
         InvokeRepeating("CreateSmallMonster", 0.5f, intervalTime);
         InvokeRepeating("SetEnemyActive", 0.5f, intervalTime / 3);
