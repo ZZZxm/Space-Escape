@@ -105,7 +105,7 @@ public abstract class Enemy : MonoBehaviour
     {
         if (other.CompareTag("BombEffect"))
         {
-            hurt(JourneyManager.getInstance().atts[2]/4);
+            hurt(JourneyManager.getInstance().atts[2] / 2);
         }
     }
 
