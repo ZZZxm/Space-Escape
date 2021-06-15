@@ -15,7 +15,7 @@ public abstract class PlayerController : MonoBehaviour
     public int totalBlood;
     public int currentBlood;
     private bool bDodge;
-    public GameObject bulletPrefab;
+    
     protected Vector2 lookDirection = new Vector2(0, -1);
 
     // Start is called before the first frame update
@@ -59,6 +59,7 @@ public abstract class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             normalAttack();
+            animator.SetTrigger("Attack");
             Debug.Log("normal attack");
         }
 
@@ -68,6 +69,16 @@ public abstract class PlayerController : MonoBehaviour
             animator.SetTrigger("Duck");
             StartCoroutine("DelayNoDodge", 0.3);
         }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            qSkill();
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            eSkill();
+        }
     }
 
     private void FixedUpdate()
@@ -75,12 +86,10 @@ public abstract class PlayerController : MonoBehaviour
         if (bDodge)
         {
             rb2D.MovePosition(rb2D.position - 2 * lookDirection * speed * Time.fixedDeltaTime);
-            // Debug.Log("DODGE");
         }
         else
         {
             rb2D.MovePosition(rb2D.position + movement * speed * Time.fixedDeltaTime);
-            // Debug.Log("NO!!");
         }
     }
 
@@ -93,7 +102,7 @@ public abstract class PlayerController : MonoBehaviour
         }
         
         this.currentBlood -= deltaBlood;
-        JourneyManager.getInstance().ChangePlayerHP(-deltaBlood);
+        // JourneyManager.getInstance().ChangePlayerHP(-deltaBlood);
         animator.SetTrigger("Hit");
         Debug.Log("Player blood left: " + currentBlood);
     }
@@ -104,7 +113,10 @@ public abstract class PlayerController : MonoBehaviour
     }
 
     public abstract void normalAttack();
-    public abstract void dodge();
+
+    public abstract void qSkill();
+
+    public abstract void eSkill();
 
     IEnumerator DelayNoDodge(float time)
     {

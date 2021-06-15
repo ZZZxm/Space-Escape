@@ -1,10 +1,15 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerBlue : PlayerController
 {
     public GameObject bombPrefab;
+
+    private Boolean cool=false;
+
+    private Boolean consecutive = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -12,6 +17,7 @@ public class PlayerBlue : PlayerController
         animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
         rb2D = GetComponent<Rigidbody2D>();
+        cool = false;
     }
 
     protected void Update()
@@ -23,17 +29,58 @@ public class PlayerBlue : PlayerController
             transform.localScale = new Vector3(-faceDirection, 1, 1);
         }
     }
+
+    private void Attack(int range,Boolean consecutive=false)
+    {
+        if (cool==false|| this.consecutive)
+        {
+            if (!consecutive)
+            {
+                cool = true;
+                StartCoroutine("CanAttack", 2);
+            }
+            GameObject bomb = Instantiate(bombPrefab);
+            bomb.transform.position = new Vector3(Mathf.RoundToInt(transform.position.x + 0.5f) - 0.5f,
+                Mathf.RoundToInt(transform.position.y));
+            bomb.GetComponent<BombController>().Init(1, range);
+        }
+    }
     
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("BombEffect"))
+        {
+            hurt(GameObject.FindGameObjectWithTag("BombEffect").GetComponent<ExplodeController>().attack);
+        }
+    }
 
     public override void normalAttack()
     {
-        GameObject bomb=Instantiate(bombPrefab);
-        bomb.transform.position=new Vector3(Mathf.RoundToInt(transform.position.x+0.5f)-0.5f,Mathf.RoundToInt(transform.position.y));
-        bomb.GetComponent<BombController>().Init(2,1);
+        Attack(1,consecutive);
     }
 
-    public override void dodge()
+    public override void qSkill()
     {
-        throw new System.NotImplementedException();
+        Attack(3);
     }
+
+    public override void eSkill()
+    {
+        consecutive = true;
+        StartCoroutine("UnsetCon", 2);
+    }
+    
+    IEnumerator CanAttack(int time)
+    {
+        yield return new WaitForSeconds(time);
+        cool = false;
+    }
+    
+    IEnumerator UnsetCon(int time)
+    {
+        yield return new WaitForSeconds(time);
+        consecutive = false;
+    }
+    
+    
 }

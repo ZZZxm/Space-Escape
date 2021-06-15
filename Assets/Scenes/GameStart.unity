@@ -463,6 +463,8 @@ MonoBehaviour:
   player: {fileID: 4191227824684547165, guid: 7583880a7267b456f83e08817e60d8e0, type: 3}
   playerBlue: {fileID: 5890554997309502268, guid: 5957e52e662c541e4b103287c18c50c6,
     type: 3}
+  PlayerSword: {fileID: 7147808811277709217, guid: 562d73e0904ce4f2dbf925c1f889b838,
+    type: 3}
 --- !u!4 &683940704
 Transform:
   m_ObjectHideFlags: 0
