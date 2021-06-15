@@ -89,7 +89,7 @@ public class MapController : MonoBehaviour
             int xPos = Random.Range(-15, 15);
             int yPos = Random.Range(-15, 15);
 
-            if (checkPixelAvailable(xPos, yPos, 4))
+            if (checkBoxInNeighbour(xPos, yPos, 4) && checkPixelAvailable(xPos, yPos, 1))
             {
                 propLayer.SetTile(new Vector3Int(xPos, yPos, 0), boxTile);
                 curBox++;
@@ -136,6 +136,23 @@ public class MapController : MonoBehaviour
                 int curX = x + p;
                 int curY = y + q;
                 if (wallLayer.HasTile(new Vector3Int(curX, curY, 0)) || propLayer.HasTile(new Vector3Int(curX, curY, 0)) || trapLayer.HasTile(new Vector3Int(curX, curY, 0)))
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    private bool checkBoxInNeighbour(int x, int y, int r)
+    {
+        for (int p = -r; p <= r; p++)
+        {
+            for (int q = -r; q <= r; q++)
+            {
+                int curX = x + p;
+                int curY = y + q;
+                if (propLayer.HasTile(new Vector3Int(curX, curY, 0)))
                 {
                     return false;
                 }

@@ -34,7 +34,7 @@ public class JourneyManager : MonoBehaviour
 
     public EnemyGenerator enemyGenerator;
 
-    public int LEVEL_PER_JOURNEY = 3;
+    public int LEVEL_PER_JOURNEY = 2;
 
     /*全局变量部分结束*/
 
@@ -94,7 +94,7 @@ public class JourneyManager : MonoBehaviour
         unitNum = 1;
         playNum = 1;
         winNum = 0;
-        LEVEL_PER_JOURNEY = 4;
+        LEVEL_PER_JOURNEY = 2;
         //道具数量初始化
         items[0] = 5;
         items[1] = 5;
@@ -598,7 +598,7 @@ public class JourneyManager : MonoBehaviour
         //关卡变量重置
         enemyGenerator = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<EnemyGenerator>();
         // roomNumber+=1;
-        tileStyle = (tileStyle + 1) % 2;
+        // tileStyle = (tileStyle + 1) % 2;
         unitTime = 0;
         //关卡变量重置
         unitNum++;//关卡数+1
@@ -631,19 +631,7 @@ public class JourneyManager : MonoBehaviour
         unitTime = 0;
         if (unitNum != LEVEL_PER_JOURNEY)
         {
-            winCase = Random.Range(0, 3);
-        }
-        else
-        {
-            winCase = 0;
-        }
-        if (winCase == 1)
-        {
-            boxNum = 10;
-        }
-        else
-        {
-            boxNum = 3;
+            initWincase();
         }
         //回合变量部分重置
         ResetJourneyManager();
