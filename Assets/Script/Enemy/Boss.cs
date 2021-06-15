@@ -14,10 +14,10 @@ public class Boss : Enemy
         // 怪物属性设置
         int bonus = JourneyManager.getInstance().playNum;
 
-        this.maxBlood = 5000 + bonus * 500;
+        this.maxBlood = 1000 + bonus * 500;
         this.blood = this.maxBlood;
         this.attack = 100 + bonus * 10;
-        this.defend = 100 + bonus * 10;
+        this.defend = 10 + bonus * 10;
         this.viewRadius = 70.0f;
     }
 
@@ -42,5 +42,15 @@ public class Boss : Enemy
     {
         Debug.Log("Boss Blood: "+blood);
         base.hurt(deltaBlood);
+        if (blood <= 0)
+        {
+            Invoke("Win", 1.0f);
+        }
+    }
+
+    public void Win()
+    {
+        Debug.Log("Win the BOSSS!!!");
+        JourneyManager.getInstance().UnitOverToNextLevel();
     }
 }

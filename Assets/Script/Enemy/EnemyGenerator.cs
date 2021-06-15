@@ -65,37 +65,15 @@ public class EnemyGenerator : MonoBehaviour
                 gameMode = GameMode.Survival;
                 break;
             }
+            case 3:
+            {
+                gameMode = GameMode.Boss;
+                break;
+            }
         }
 
         // 根据不同模式设置敌人出现机制
-        switch (gameMode)
-        {
-            case GameMode.BeatAll:
-            {
-                BeatAll();
-                break;
-            }
-            case GameMode.Survival:
-            {
-                Survival();
-                break;
-            }
-            case GameMode.TreasureAll:
-            {
-                TreasureAll();
-                break;
-            }
-            case GameMode.Boss:
-            {
-                Boss();
-                break;
-            }
-            default:
-            {
-                Debug.LogWarning("You haven't set the game mode yet.");
-                break;
-            }
-        }
+        SetGameMode(gameMode);
     }
 
     private void Update()
@@ -108,6 +86,7 @@ public class EnemyGenerator : MonoBehaviour
         CancelInvoke();
         this.gameMode = gameMode;
         killedEnemy = 0;
+        Debug.Log("GameMode:" + gameMode.ToString());
         // 根据不同模式设置敌人出现机制
         switch (gameMode)
         {

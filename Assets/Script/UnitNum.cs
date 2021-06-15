@@ -11,13 +11,13 @@ public class UnitNum : MonoBehaviour
     void Start()
     {
         numtxt=GetComponent<Text>();
-        numtxt.text=JourneyManager.getInstance().unitNum.ToString()+"/9";
+        numtxt.text=JourneyManager.getInstance().unitNum.ToString()+"/" + JourneyManager.getInstance().LEVEL_PER_JOURNEY;
         JourneyManager.getInstance().gameUIScript.unitNum=this;
     }
 
     
     public void Change() //当关卡数发生变化时，由GameUIController调用
     {
-         numtxt.text=JourneyManager.getInstance().unitNum.ToString()+"/9";
+         numtxt.text=JourneyManager.getInstance().unitNum.ToString()+"/" + JourneyManager.getInstance().LEVEL_PER_JOURNEY;
     }
 }

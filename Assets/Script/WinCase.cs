@@ -29,6 +29,11 @@ public class WinCase : MonoBehaviour
                 numtxt.text="存活30s";
                 break;
             }
+            case 3:
+            {
+                numtxt.text = "Boss战";
+                break;
+            }
             default:
             {
                 numtxt.text="";

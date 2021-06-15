@@ -26,11 +26,15 @@ public class JourneyManager : MonoBehaviour
     public int money = 500; //金钱
     public int playNum = 1; //当前回合数，需手动调gameui更改
 
+    public int winNum = 0; // 获胜回合数
+
     public Dictionary<string, int>[,] CLOTHMAP = new Dictionary<string, int>[4, 4]; //16种防具的属性效果存储在字典数组里
 
     public int[] ITEMPOWER = new int[4];  //四种道具的作用效果存储在数组里 四种道具:回血、回蓝、加敏捷值、加耐力值【一一对应】
 
     public EnemyGenerator enemyGenerator;
+
+    public int LEVEL_PER_JOURNEY = 3;
 
     /*全局变量部分结束*/
 
@@ -89,6 +93,8 @@ public class JourneyManager : MonoBehaviour
         /* ---------------------------         JourneyManager一些属性的初始化     ------------------------------------      */
         unitNum = 1;
         playNum = 1;
+        winNum = 0;
+        LEVEL_PER_JOURNEY = 4;
         //道具数量初始化
         items[0] = 5;
         items[1] = 5;
@@ -448,6 +454,7 @@ public class JourneyManager : MonoBehaviour
         if (win)
         {
             isWin = 1;
+            winNum++;
             GameObject root = GameObject.Find("UnitCanvas(Clone)");
             GameObject uw = root.transform.Find("FianlWin").gameObject;
             uw.SetActive(true);
@@ -461,6 +468,7 @@ public class JourneyManager : MonoBehaviour
             GameObject uw = root.transform.Find("UnitLose").gameObject;
             uw.SetActive(true);
             Time.timeScale = 0.0f;
+            this.playNum = 1;
             // nextJourney();
         }
     }
@@ -482,6 +490,7 @@ public class JourneyManager : MonoBehaviour
 
     private void initWincase()
     {
+        //winCase = 3;
         winCase = Random.Range(0, 3);
         // 根据wincase设置敌人生成
         switch (winCase)
@@ -507,6 +516,11 @@ public class JourneyManager : MonoBehaviour
                 // enemyGenerator.SetGameMode(GameMode.Survival);
                 break;
             }
+            case 3:
+            {
+                roomNumber = 1;
+                break;
+            }
         }
     }
 
@@ -518,6 +532,7 @@ public class JourneyManager : MonoBehaviour
         {
             case 0:
             {
+                //roomNumber = 1;
                 roomNumber = Random.Range(2, 5);
                 boxNum = 5;
                 enemyGenerator.SetGameMode(GameMode.BeatAll);
@@ -525,6 +540,7 @@ public class JourneyManager : MonoBehaviour
             }
             case 1:
             {
+                //roomNumber = 1;
                 roomNumber = 7;
                 boxNum = 12;
                 enemyGenerator.SetGameMode(GameMode.TreasureAll);
@@ -540,6 +556,43 @@ public class JourneyManager : MonoBehaviour
         }
     }
 
+    private void setWincase(GameMode gameMode)
+    {
+        switch (gameMode)
+        {
+            case GameMode.BeatAll:
+            {
+                roomNumber = Random.Range(2, 5);
+                //roomNumber = 1;
+                boxNum = 5;
+                enemyGenerator.SetGameMode(GameMode.BeatAll);
+                break;
+            }
+            case GameMode.TreasureAll:
+            {
+                roomNumber = 7;
+                //roomNumber = 1;
+                boxNum = 12;
+                enemyGenerator.SetGameMode(GameMode.TreasureAll);
+                break;
+            }
+            case GameMode.Survival:
+            {
+                roomNumber = 1;
+                boxNum = 3;
+                enemyGenerator.SetGameMode(GameMode.Survival);
+                break;
+            }
+            case GameMode.Boss:
+            {
+                roomNumber = 1;
+                boxNum = 5;
+                enemyGenerator.SetGameMode(GameMode.Boss);
+                break;
+            }
+        }
+    }
+
     public void nextLevel()  //进入下一关
     {
         //关卡变量重置
@@ -549,21 +602,23 @@ public class JourneyManager : MonoBehaviour
         unitTime = 0;
         //关卡变量重置
         unitNum++;//关卡数+1
+        Debug.Log("unitNum: " + unitNum);
 
-        if (unitNum == 10)
+        if (unitNum == LEVEL_PER_JOURNEY + 1)
         {
+            Debug.Log("Passssssssssss");
             GameOver(true);
             return;
         }
 
-        if (unitNum != 9)
+        if (unitNum != LEVEL_PER_JOURNEY)
         {
             setWincase();
         }
         else
         {
-            winCase = 0;
-            boxNum = 2;
+            winCase = 3;
+            setWincase(GameMode.Boss);
         }
         reloadScene("GameStart");
     }
@@ -574,7 +629,7 @@ public class JourneyManager : MonoBehaviour
         // roomNumber+=1;
         tileStyle = (tileStyle + 1) % 2;
         unitTime = 0;
-        if (unitNum != 9)
+        if (unitNum != LEVEL_PER_JOURNEY)
         {
             winCase = Random.Range(0, 3);
         }

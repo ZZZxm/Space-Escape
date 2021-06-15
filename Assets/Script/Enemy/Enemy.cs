@@ -133,14 +133,14 @@ public abstract class Enemy : MonoBehaviour
         animator.SetBool("Hit", false);
     }
 
-    private void Die()
+    protected void Die()
     {   
         Vector3 diePos = transform.position;
  
         this.state = EnemyState.Die;
         this.rb2D.constraints = RigidbodyConstraints2D.FreezeAll;
         animator.SetBool("Death", true);
-        Destroy(this.gameObject, 2.0f);
+        Destroy(this.gameObject, 3.0f);
         DropProps(diePos);
 
         if (enemyGenerator.gameMode != GameMode.BeatAll)
@@ -154,7 +154,6 @@ public abstract class Enemy : MonoBehaviour
         {
             Debug.Log("Beat All Success!");
             JourneyManager.getInstance().UnitOverToNextLevel();
-
         }
     }
 

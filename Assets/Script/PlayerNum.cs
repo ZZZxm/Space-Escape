@@ -11,7 +11,11 @@ public class PlayerNum : MonoBehaviour
     void Start()
     {
         numtxt=GetComponent<Text>();
-        numtxt.text=JourneyManager.getInstance().playNum.ToString();
+
+        int playNum = JourneyManager.getInstance().playNum;
+        int winNum = JourneyManager.getInstance().winNum;
+
+        numtxt.text= playNum + "(" + winNum + ")";
         JourneyManager.getInstance().gameUIScript.pLayerNum=this;
     }
 
