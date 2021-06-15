@@ -140,7 +140,7 @@ public abstract class Enemy : MonoBehaviour
         this.state = EnemyState.Die;
         this.rb2D.constraints = RigidbodyConstraints2D.FreezeAll;
         animator.SetBool("Death", true);
-        Destroy(this.gameObject, 1.0f);
+        Destroy(this.gameObject, 2.0f);
         DropProps(diePos);
 
         if (enemyGenerator.gameMode != GameMode.BeatAll)
@@ -152,8 +152,7 @@ public abstract class Enemy : MonoBehaviour
         this.enemyGenerator.killedEnemy++;
         if (enemyGenerator.gameMode == GameMode.BeatAll && this.enemyGenerator.killedEnemy == this.enemyGenerator.MAX_ENEMIES)
         {
-            Debug.Log("Beat All Success!");
-            JourneyManager.getInstance().UnitOverToNextLevel();
+            enemyGenerator.winJourney = true;
         }
     }
 

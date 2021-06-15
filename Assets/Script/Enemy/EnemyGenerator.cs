@@ -36,6 +36,8 @@ public class EnemyGenerator : MonoBehaviour
 
     private GameObject boss;
 
+    public bool winJourney = false;
+
 
     public void Start()  //实例化，参数设置为坐标
     {
@@ -78,7 +80,11 @@ public class EnemyGenerator : MonoBehaviour
 
     private void Update()
     {
-
+        if (winJourney)
+        {
+            Invoke("WinJourney", 2.5f);
+            winJourney = false;
+        }
     }
 
     public void SetGameMode(GameMode gameMode)
@@ -220,5 +226,11 @@ public class EnemyGenerator : MonoBehaviour
         {
             enemies[i].GetComponent<AIDestinationSetter>().enabled = true;
         }
+    }
+
+    public void WinJourney()
+    {
+        Debug.Log("Win the BOSSS!!!");
+        JourneyManager.getInstance().UnitOverToNextLevel();
     }
 }

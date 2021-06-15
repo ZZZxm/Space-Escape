@@ -44,13 +44,7 @@ public class Boss : Enemy
         base.hurt(deltaBlood);
         if (blood <= 0)
         {
-            Win();
+            enemyGenerator.winJourney = true;
         }
-    }
-
-    public void Win()
-    {
-        Debug.Log("Win the BOSSS!!!");
-        JourneyManager.getInstance().UnitOverToNextLevel();
     }
 }
