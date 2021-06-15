@@ -33,6 +33,7 @@ public abstract class PlayerController : MonoBehaviour
         curMP = JourneyManager.getInstance().playerCurMP;
         power = JourneyManager.getInstance().atts[2];
         patience = JourneyManager.getInstance().atts[3];
+        Debug.Log("INITIAL PLAYER: "+totalBlood);
     }
 
     // Start is called before the first frame update

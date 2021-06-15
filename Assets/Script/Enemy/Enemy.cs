@@ -140,7 +140,7 @@ public abstract class Enemy : MonoBehaviour
         this.state = EnemyState.Die;
         this.rb2D.constraints = RigidbodyConstraints2D.FreezeAll;
         animator.SetBool("Death", true);
-        Destroy(this.gameObject, 3.0f);
+        Destroy(this.gameObject, 1.0f);
         DropProps(diePos);
 
         if (enemyGenerator.gameMode != GameMode.BeatAll)
