@@ -44,7 +44,7 @@ public class Boss : Enemy
         base.hurt(deltaBlood);
         if (blood <= 0)
         {
-            Invoke("Win", 1.0f);
+            Win();
         }
     }
 
