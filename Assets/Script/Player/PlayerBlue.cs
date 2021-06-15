@@ -43,7 +43,7 @@ public class PlayerBlue : PlayerController
             if (!consecutive)
             {
                 cool = true;
-                StartCoroutine("CanAttack", 2);
+                StartCoroutine("CanAttack", 1.5);
             }
             GameObject bomb = Instantiate(bombPrefab);
             bomb.transform.position = new Vector3(Mathf.RoundToInt(transform.position.x + 0.5f) - 0.5f,

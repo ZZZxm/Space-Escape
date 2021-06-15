@@ -26,7 +26,9 @@ public class EnemyGenerator : MonoBehaviour
 
     private float intervalTime = 8.0f; // 生成怪物的时间间隔
 
-    static private int MAX_ENEMIES = 10; // 最大怪物数
+    public int MAX_ENEMIES = 10; // 最大怪物数
+
+    public int killedEnemy = 0; // 被杀死的敌人数量（Beat All模式使用）
 
     private GameObject flyingMonster;
 
@@ -39,6 +41,7 @@ public class EnemyGenerator : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         NumOfSmallEnemies = 0;
+        killedEnemy = 0;
         // 获取所有敌人资源
         flyingMonster = (GameObject)Resources.Load("Prefabs/Enemy/Flying Monster");
         greenMonster = (GameObject)Resources.Load("Prefabs/Enemy/Green Monster");
@@ -104,6 +107,7 @@ public class EnemyGenerator : MonoBehaviour
     {
         CancelInvoke();
         this.gameMode = gameMode;
+        killedEnemy = 0;
         // 根据不同模式设置敌人出现机制
         switch (gameMode)
         {
@@ -142,7 +146,7 @@ public class EnemyGenerator : MonoBehaviour
             player = GameObject.FindGameObjectWithTag("Player");
         }
         
-        if (player == null || NumOfSmallEnemies >= EnemyGenerator.MAX_ENEMIES)
+        if (player == null || NumOfSmallEnemies >= MAX_ENEMIES)
         {
             return;
         }
@@ -172,7 +176,7 @@ public class EnemyGenerator : MonoBehaviour
     {
         // 击败所有敌人
         intervalTime = 5.0f;
-        MAX_ENEMIES = 15;
+        MAX_ENEMIES = 2;
         InvokeRepeating("CreateSmallMonster", 0.5f, intervalTime);
     }
 

@@ -114,7 +114,7 @@ public abstract class Enemy : MonoBehaviour
     {   
         animator.SetBool("Hit", true);
 
-        blood -= deltaBlood;
+        blood -= (deltaBlood - defend);
         slider.value = (float)blood / (float)maxBlood;
 
         if (blood <= 0 && !(this.state == EnemyState.Die))
@@ -142,8 +142,20 @@ public abstract class Enemy : MonoBehaviour
         animator.SetBool("Death", true);
         Destroy(this.gameObject, 2.0f);
         DropProps(diePos);
-        this.enemyGenerator.NumOfSmallEnemies--;
-        Debug.Log("Enemy Left: " + this.enemyGenerator.NumOfSmallEnemies);
+
+        if (enemyGenerator.gameMode != GameMode.BeatAll)
+        {
+            this.enemyGenerator.NumOfSmallEnemies--;
+            Debug.Log("Enemy Left: " + this.enemyGenerator.NumOfSmallEnemies);
+        }
+
+        this.enemyGenerator.killedEnemy++;
+        if (enemyGenerator.gameMode == GameMode.BeatAll && this.enemyGenerator.killedEnemy == this.enemyGenerator.MAX_ENEMIES)
+        {
+            Debug.Log("Beat All Success!");
+            JourneyManager.getInstance().UnitOverToNextLevel();
+
+        }
     }
 
     // 随机生成掉落物品

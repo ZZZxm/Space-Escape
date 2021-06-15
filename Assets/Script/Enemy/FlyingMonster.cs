@@ -19,10 +19,12 @@ public class FlyingMonster : Enemy
     {
         base.Start();
         // 怪物属性设置
-        this.maxBlood = 500;
+        int bonus = JourneyManager.getInstance().playNum;
+
+        this.maxBlood = 500 + bonus * 50;
         this.blood = this.maxBlood;
-        this.attack = 50;
-        this.defend = 20;
+        this.attack = 50 + bonus * 5;
+        this.defend = 20 + bonus * 3;
         this.viewRadius = 40.0f;
     }
 
