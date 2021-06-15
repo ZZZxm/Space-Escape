@@ -159,24 +159,34 @@ public class EnemyGenerator : MonoBehaviour
         }
         else
         {
-            float playerX = player.transform.position.x;
-            int times = (int)((playerX + 13) / 49);
-            int x = Random.Range(-13, 13);
-            int y = Random.Range(-13, 13);
-            x += times * 49;
-
-            Vector3 pos = new Vector3(x, y, 0);
+            Vector3 pos = RandomEnemyLocation();
             RandomCreateASmallMonster(pos);
             NumOfSmallEnemies++;
             Debug.Log(NumOfSmallEnemies);
         }
     }
 
+    private Vector3 RandomEnemyLocation()
+    {
+        float playerX = player.transform.position.x;
+        float playerY = player.transform.position.y;
+
+        int roomX = (int)(Mathf.Floor((playerX + 25) / 50)) * 50;
+        int roomY = (int)(Mathf.Floor((playerY + 25) / 50)) * 50;
+        Debug.Log("roomX: " + roomX);
+        Debug.Log("roomY: " + roomY);
+
+        float x = Random.Range(roomX - 15.0f, roomX + 15.0f);
+        float y = Random.Range(roomY - 15.0f, roomY + 15.0f);
+
+        return new Vector3(x, y, 0);
+    }
+
     private void BeatAll()
     {
         // 击败所有敌人
         intervalTime = 5.0f;
-        MAX_ENEMIES = 2;
+        MAX_ENEMIES = 10;
         InvokeRepeating("CreateSmallMonster", 0.5f, intervalTime);
     }
 
