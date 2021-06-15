@@ -35,6 +35,10 @@ public class PropCollision : MonoBehaviour
             }
             JourneyManager.getInstance().ChangeBoxNum(-1);
             randomDropProp();
+            if (JourneyManager.getInstance().winCase == 1 && JourneyManager.getInstance().boxNum == 0)
+            {
+                JourneyManager.getInstance().UnitOverToNextLevel();
+            }
         }
     }
 
