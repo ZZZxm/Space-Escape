@@ -82,7 +82,7 @@ public class EnemyGenerator : MonoBehaviour
     {
         if (winJourney)
         {
-            Invoke("WinJourney", 2.5f);
+            Invoke("WinJourney", 4.0f);
             winJourney = false;
         }
     }
@@ -196,6 +196,11 @@ public class EnemyGenerator : MonoBehaviour
     private void Boss()
     {
         // Boss模式，只有一个大Boss
+        Invoke("CreateBoss", 3.0f);
+    }
+
+    private void CreateBoss()
+    {
         Vector3 pos = new Vector3(10, 0, 0);
         Instantiate(boss, pos, Quaternion.identity);
     }

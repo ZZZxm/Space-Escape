@@ -47,14 +47,16 @@ MonoBehaviour:
   boxSprite: {fileID: 21300000, guid: 672becbe60f0cd6478003b309fb36916, type: 3}
   trapSprite: {fileID: 21300000, guid: c2fe6441c7548aa468af85789a9e2042, type: 3}
   wallSpriteList:
+  - {fileID: 21300000, guid: 6ee01df543e13874ebe4b57b7f48ef95, type: 3}
   - {fileID: 21300000, guid: 4403b6e0783bbb14cacdcdd6a6af2ff7, type: 3}
   - {fileID: 21300000, guid: 090abda9ee45593489f61e11fe8b80ee, type: 3}
   floorSpriteList:
-  - {fileID: 21300000, guid: b91a05a60fa64b94c9ce169b4c5a2710, type: 3}
   - {fileID: 21300000, guid: bc3f34d9fdcfdd64d93569f350b44122, type: 3}
-  hasLeftEdge: 0
-  hasRightEdge: 0
+  - {fileID: 21300000, guid: b91a05a60fa64b94c9ce169b4c5a2710, type: 3}
+  - {fileID: 21300000, guid: b97a59ceb48d38a43b78172866650f09, type: 3}
+  hasPath: 00000000000000000000000000000000
   boxNumber: 0
+  hasWall: 1
 --- !u!1 &3020148074501202245
 GameObject:
   m_ObjectHideFlags: 0
@@ -4327,9 +4329,9 @@ Tilemap:
   - m_RefCount: 0
     m_Data: {r: 9.598e-41, g: 9.598e-41, b: 9.598e-41, a: 9.598e-41}
   - m_RefCount: 0
-    m_Data: {r: 1.1103e-40, g: 1.1103e-40, b: 1.1103e-40, a: 1.1103e-40}
+    m_Data: {r: 9.5726e-41, g: 9.5726e-41, b: 9.5726e-41, a: 9.5726e-41}
   - m_RefCount: 444
-    m_Data: {r: 0.8908445, g: 0.49604088, b: 0.5726099, a: 1}
+    m_Data: {r: 0.9681621, g: 0.625852, b: 0.6276019, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -13740,7 +13742,7 @@ Tilemap:
   - m_RefCount: 0
     m_Data: {r: 0, g: 0, b: 0, a: 0}
   - m_RefCount: 1020
-    m_Data: {r: 0.752276, g: 0.5202758, b: 0.55362, a: 1}
+    m_Data: {r: 0.96992075, g: 0.66099066, b: 0.6746932, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}

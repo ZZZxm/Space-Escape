@@ -103,12 +103,7 @@ public class GameMapGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            JourneyManager.getInstance().reloadScene("GameStart");
-        }
-        */
+
     }
 
     private int checkRoomExist(int num, float xPos, float yPos)

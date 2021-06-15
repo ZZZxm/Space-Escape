@@ -34,7 +34,7 @@ public class JourneyManager : MonoBehaviour
 
     public EnemyGenerator enemyGenerator;
 
-    public int LEVEL_PER_JOURNEY = 2;
+    public int LEVEL_PER_JOURNEY = 3;
 
     /*全局变量部分结束*/
 
@@ -96,7 +96,7 @@ public class JourneyManager : MonoBehaviour
         unitNum = 1;
         playNum = 1;
         winNum = 0;
-        LEVEL_PER_JOURNEY = 2;
+        LEVEL_PER_JOURNEY = 3;
         //道具数量初始化
         items[0] = 5;
         items[1] = 5;
@@ -377,39 +377,44 @@ public class JourneyManager : MonoBehaviour
     {
         int result = items[i] - 1;
         if (result < 0) return;
+        string itemInfo = "";
         switch (i)
         {
             case 0:
             {
                 //使用回血道具
-                if(playerCurHP==playerHPMax) return;
+                itemInfo = "成功使用回血道具";
+                if (playerCurHP == playerHPMax) return;
                 ChangePlayerHP(ITEMPOWER[0]);
-                    playerController.addHp();
-                ChangeItems(0,-1);
+                playerController.addHp();
+                ChangeItems(0, -1);
                 break;
             }
              case 1:
             {
                 //使用回蓝道具
+                itemInfo = "成功使用回蓝道具";
                 if(playerCurMP==playerMPMax) return;
                 ChangePlayerMP(ITEMPOWER[1]);
-                    playerController.addMp();
+                playerController.addMp();
                 ChangeItems(1,-1);
                 break;
             }
              case 2:
             {
                 //使用增敏道具
+                itemInfo = "成功使用增敏道具";
                 ChangeAtts(2,ITEMPOWER[2]);
-                    playerController.addPower();
+                playerController.addPower();
                 ChangeItems(2,-1);
                 break;
             }
              case 3:
             {
                 //使用增耐道具
+                itemInfo = "成功使用增耐道具";
                 ChangeAtts(3,ITEMPOWER[3]);
-                    playerController.addPatience();
+                playerController.addPatience();
                 ChangeItems(3,-1);
                 break;
             }
@@ -418,6 +423,8 @@ public class JourneyManager : MonoBehaviour
                 break;
             }
         }
+        OpenBox(itemInfo);
+        Invoke("clearPropInfo", 5);
     }
 
     public void ChangeClothes(int i, int j)  //增加装备【只能增加】 j转换成1到4 //i对应着类别0-3，j对应编号0-3
@@ -609,6 +616,7 @@ public class JourneyManager : MonoBehaviour
         if (unitNum == LEVEL_PER_JOURNEY + 1)
         {
             Debug.Log("Passssssssssss");
+            unitNum--;
             GameOver(true);
             return;
         }
@@ -631,13 +639,10 @@ public class JourneyManager : MonoBehaviour
     {
         //关卡变量部分重置
         // roomNumber+=1;
-        tileStyle = (tileStyle + 1) % 2;
+        tileStyle = (tileStyle + 1) % 3;
         unitTime = 0;
-        if (unitNum != LEVEL_PER_JOURNEY)
-        {
-            initWincase();
-            hasWall = true;
-        }
+        initWincase();
+        hasWall = true;
         //回合变量部分重置
         ResetJourneyManager();
         SceneManager.LoadScene("GameOver");
@@ -653,5 +658,9 @@ public class JourneyManager : MonoBehaviour
 
     }
 
+    private void clearPropInfo()
+    {
+        OpenBox("");
+    }
 
 }

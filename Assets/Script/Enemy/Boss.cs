@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Boss : Enemy
 {
-    public float attackRange = 6.0f;
+    public float attackRange = 12.0f;
 
-    public float attackWidth = 4.0f;
+    public float attackWidth = 12.0f;
     // Start is called before the first frame update    
     new void Start()
     {
@@ -18,7 +18,7 @@ public class Boss : Enemy
         this.blood = this.maxBlood;
         this.attack = 100 + bonus * 10;
         this.defend = 10 + bonus * 10;
-        this.viewRadius = 70.0f;
+        this.viewRadius = 150.0f;
     }
 
     // Update is called once per frame
@@ -45,6 +45,18 @@ public class Boss : Enemy
         if (blood <= 0)
         {
             enemyGenerator.winJourney = true;
+        }
+    }
+
+    override protected void DropProps(Vector3 pos)
+    {
+        float randX = Random.Range(-15.0f, 15.0f);
+        float randY = Random.Range(-15.0f, 15.0f);
+
+        int coinNum = 15;
+        for (int i = 0; i < coinNum; i++)
+        {
+            Instantiate(coin, new Vector3(pos.x + randX, pos.y + randY, 0), Quaternion.identity);
         }
     }
 }

@@ -50,49 +50,49 @@ public class PropCollision : MonoBehaviour
         {
             // 回血
             JourneyManager.getInstance().ChangeItems(0, 1);
-            propInfo = "您已开启宝箱，增加体力值";
+            propInfo = "您已开启宝箱，获得回血道具";
         }
         else if (ranNum < 30)
         {
             // 回蓝
             JourneyManager.getInstance().ChangeItems(1, 1);
-            propInfo = "您已开启宝箱，增加能力值";
+            propInfo = "您已开启宝箱，获得增蓝道具";
         }
         else if (ranNum < 40)
         {
             // 加速
             JourneyManager.getInstance().ChangeItems(2, 1);
-            propInfo = "您已开启宝箱，增加速度";
+            propInfo = "您已开启宝箱，获得增敏道具";
         }
         else if (ranNum < 50)
         {
             // 加防御
             JourneyManager.getInstance().ChangeItems(3, 1);
-            propInfo = "您已开启宝箱，增加防御值";
+            propInfo = "您已开启宝箱，获得增耐道具";
         }
         else if (ranNum < 60)
         {
             // 帽子
             JourneyManager.getInstance().ChangeClothes(0);
-            propInfo = "您已开启宝箱，获得帽子";
+            propInfo = "您已开启宝箱，获得装备帽子";
         }
         else if (ranNum < 70)
         {
             // 护甲
             JourneyManager.getInstance().ChangeClothes(1);
-            propInfo = "您已开启宝箱，获得护甲";
+            propInfo = "您已开启宝箱，获得装备护甲";
         }
         else if (ranNum < 80)
         {
             // 鞋子
             JourneyManager.getInstance().ChangeClothes(2);
-            propInfo = "您已开启宝箱，获得鞋子";
+            propInfo = "您已开启宝箱，获得装备鞋子";
         }
         else if (ranNum < 90)
         {
             // 饰品
             JourneyManager.getInstance().ChangeClothes(3);
-            propInfo = "您已开启宝箱，获得饰品";
+            propInfo = "您已开启宝箱，获得装备饰品";
         }
         JourneyManager.getInstance().OpenBox(propInfo);
         Invoke("clearPropInfo", 5);

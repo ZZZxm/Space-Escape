@@ -191,6 +191,11 @@ public class MapController : MonoBehaviour
             int xPos = Random.Range(-12, 12);
             int yPos = Random.Range(-12, 12);
 
+            if (xPos <= 1 && xPos >= -1 && yPos <= 1 && yPos >= -1)
+            {
+                continue;
+            }
+
             if (checkPixelAvailable(xPos, yPos, 3))
             {
                 int mdl = Random.Range(0, 7);

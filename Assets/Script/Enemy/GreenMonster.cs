@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GreenMonster : Enemy
 {
-    public float attackRadius = 2.0f;
+    public float attackRadius = 4.0f;
     
     new void Start()
     {

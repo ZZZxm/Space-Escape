@@ -28,7 +28,7 @@ public abstract class Enemy : MonoBehaviour
     protected EnemyState state;
     protected EnemyGenerator enemyGenerator;
 
-    private GameObject coin;
+    protected GameObject coin;
     private GameObject hpItem;
     private GameObject mpItem;
     private GameObject speedItem;
@@ -140,7 +140,7 @@ public abstract class Enemy : MonoBehaviour
         this.state = EnemyState.Die;
         this.rb2D.constraints = RigidbodyConstraints2D.FreezeAll;
         animator.SetBool("Death", true);
-        Destroy(this.gameObject, 2.0f);
+        Destroy(this.gameObject, 1.5f);
         DropProps(diePos);
 
         if (enemyGenerator.gameMode != GameMode.BeatAll)
@@ -157,7 +157,7 @@ public abstract class Enemy : MonoBehaviour
     }
 
     // 随机生成掉落物品
-    private void DropProps(Vector3 pos)
+    protected virtual void DropProps(Vector3 pos)
     {
         int seed = Random.Range(0, 10);
         if (seed < 7)

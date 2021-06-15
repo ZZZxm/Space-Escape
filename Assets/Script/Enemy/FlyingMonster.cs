@@ -12,7 +12,7 @@ public class FlyingMonster : Enemy
 {
 
     private float attackRange = 2.0f;// 攻击范围长度
-    private float attackWidth = 1.0f;// 攻击范围宽度
+    private float attackWidth = 3.0f;// 攻击范围宽度
 
 
     new void Start()
