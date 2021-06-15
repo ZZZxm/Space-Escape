@@ -10,10 +10,12 @@ public class GreenMonster : Enemy
     {
         base.Start();
         // 怪物属性设置
-        this.maxBlood = 500;
+        int bonus = JourneyManager.getInstance().playNum;
+
+        this.maxBlood = 500 + bonus * 40;
         this.blood = this.maxBlood;
-        this.attack = 40;
-        this.defend = 30;
+        this.attack = 40 + bonus * 7;
+        this.defend = 30 + bonus * 3;
         this.viewRadius = 50.0f;
     }
 

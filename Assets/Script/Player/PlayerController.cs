@@ -15,14 +15,24 @@ public abstract class PlayerController : MonoBehaviour
     public int totalBlood;
     public int currentBlood;
     private bool bDodge;
+    private int totalMP;
+    protected int curMP;
+    protected int deltaEMP;
+    protected int deltaQMP;
+    protected int power;
+    protected int patience;
     
     protected Vector2 lookDirection = new Vector2(0, -1);
 
-    private void Awake()
+    protected void Awake()
     {
         totalBlood = JourneyManager.getInstance().playerHPMax;
         currentBlood = JourneyManager.getInstance().playerCurHP;
         JourneyManager.getInstance().playerController = this;
+        totalMP = JourneyManager.getInstance().playerMPMax;
+        curMP = JourneyManager.getInstance().playerCurMP;
+        power = JourneyManager.getInstance().atts[2];
+        patience = JourneyManager.getInstance().atts[3];
     }
 
     // Start is called before the first frame update
@@ -86,7 +96,12 @@ public abstract class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            eSkill();
+            if (this.curMP - deltaEMP > 0)
+            {
+                this.curMP -= deltaEMP;
+                JourneyManager.getInstance().ChangePlayerMP(-deltaEMP);
+                eSkill();
+            }
         }
     }
 
@@ -104,6 +119,7 @@ public abstract class PlayerController : MonoBehaviour
 
     public void hurt(int deltaBlood)
     {
+        deltaBlood -= (int)(patience / 100);
         if (bDodge)
         {
             deltaBlood = Mathf.RoundToInt(deltaBlood * 0.5f);
@@ -116,9 +132,33 @@ public abstract class PlayerController : MonoBehaviour
         //Debug.Log("Player blood left: " + currentBlood);
     }
 
-    public void addHp(int delta)
+    public void addHp()
     {
-        this.currentBlood += delta;
+        this.currentBlood = JourneyManager.getInstance().playerCurHP;
+    }
+
+    public void hpMax()
+    {
+        this.totalBlood = JourneyManager.getInstance().playerHPMax;
+    }
+
+    public void addMp()
+    {
+        this.curMP = JourneyManager.getInstance().playerCurMP;
+    }
+
+    public void mpMax()
+    {
+        this.totalMP = JourneyManager.getInstance().playerMPMax;
+    }
+
+    public void addPower()
+    {
+        this.power = JourneyManager.getInstance().atts[2];
+    }
+    public void addPatience()
+    {
+        this.patience = JourneyManager.getInstance().atts[3];
     }
 
     public int getCurrentBlood()

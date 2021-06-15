@@ -22,24 +22,33 @@ public class RoleSelect : MonoBehaviour
                     JourneyManager.getInstance().playerHPMax = 500;
                     JourneyManager.getInstance().atts[0] = JourneyManager.getInstance().playerHPMax;
                     JourneyManager.getInstance().playerCurHP = JourneyManager.getInstance().playerHPMax;
+                    JourneyManager.getInstance().playerMPMax = 200;
+                    JourneyManager.getInstance().atts[1] = JourneyManager.getInstance().playerMPMax;
+                    JourneyManager.getInstance().playerCurMP = JourneyManager.getInstance().playerMPMax;
                     break;
             }
              case "role1":
             {
                 i=1;
                 costs=200;
-                    JourneyManager.getInstance().playerHPMax = 500;
+                    JourneyManager.getInstance().playerHPMax = 300;
                     JourneyManager.getInstance().atts[0] = JourneyManager.getInstance().playerHPMax;
                     JourneyManager.getInstance().playerCurHP = JourneyManager.getInstance().playerHPMax;
+                    JourneyManager.getInstance().playerMPMax = 250;
+                    JourneyManager.getInstance().atts[1] = JourneyManager.getInstance().playerMPMax;
+                    JourneyManager.getInstance().playerCurMP = JourneyManager.getInstance().playerMPMax;
                     break;
             }
              case "role2":
             {
                 i=2;
                 costs=500;
-                    JourneyManager.getInstance().playerHPMax = 500;
+                    JourneyManager.getInstance().playerHPMax = 400;
                     JourneyManager.getInstance().atts[0] = JourneyManager.getInstance().playerHPMax;
                     JourneyManager.getInstance().playerCurHP = JourneyManager.getInstance().playerHPMax;
+                    JourneyManager.getInstance().playerMPMax = 150;
+                    JourneyManager.getInstance().atts[1] = JourneyManager.getInstance().playerMPMax;
+                    JourneyManager.getInstance().playerCurMP = JourneyManager.getInstance().playerMPMax;
                     break;
             }
             default:

@@ -376,7 +376,7 @@ public class JourneyManager : MonoBehaviour
                 //使用回血道具
                 if(playerCurHP==playerHPMax) return;
                 ChangePlayerHP(ITEMPOWER[0]);
-                    playerController.addHp(ITEMPOWER[0]);
+                    playerController.addHp();
                 ChangeItems(0,-1);
                 break;
             }
@@ -385,6 +385,7 @@ public class JourneyManager : MonoBehaviour
                 //使用回蓝道具
                 if(playerCurMP==playerMPMax) return;
                 ChangePlayerMP(ITEMPOWER[1]);
+                    playerController.addMp();
                 ChangeItems(1,-1);
                 break;
             }
@@ -392,6 +393,7 @@ public class JourneyManager : MonoBehaviour
             {
                 //使用增敏道具
                 ChangeAtts(2,ITEMPOWER[2]);
+                    playerController.addPower();
                 ChangeItems(2,-1);
                 break;
             }
@@ -399,6 +401,7 @@ public class JourneyManager : MonoBehaviour
             {
                 //使用增耐道具
                 ChangeAtts(3,ITEMPOWER[3]);
+                    playerController.addPatience();
                 ChangeItems(3,-1);
                 break;
             }

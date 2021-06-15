@@ -11,7 +11,12 @@ public class PlayerSword : PlayerController
     private int attackDown;
     private int attackUp;
     private int attackSide;
-
+    new private void Awake()
+    {
+        base.Awake();
+        this.deltaEMP = 3;
+        this.deltaQMP = 5;
+    }
     void Start()
     {
         //Get a component reference to the Player's animator component
@@ -43,10 +48,15 @@ public class PlayerSword : PlayerController
 
     public override void qSkill()
     {
-        attackDown *= 2;
-        attackUp *= 2;
-        attackSide *= 2;
-        StartCoroutine(DisableQSkill());
+        if (this.curMP - deltaQMP >= 0)
+        {
+            this.curMP -= deltaQMP;
+            JourneyManager.getInstance().ChangePlayerMP(-deltaQMP);
+            attackDown *= 2;
+            attackUp *= 2;
+            attackSide *= 2;
+            StartCoroutine(DisableQSkill());
+        }
     }
 
     IEnumerator DisableQSkill()
@@ -59,8 +69,13 @@ public class PlayerSword : PlayerController
 
     public override void eSkill()
     {
-        speed *= 2;
-        StartCoroutine(DisableESkill());
+        if (curMP - deltaEMP >= 0)
+        {
+            this.curMP -= deltaEMP;
+            JourneyManager.getInstance().ChangePlayerMP(-deltaEMP);
+            speed *= 2;
+            StartCoroutine(DisableESkill());
+        }
     }
     
     IEnumerator DisableESkill()

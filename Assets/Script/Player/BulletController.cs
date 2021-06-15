@@ -28,7 +28,7 @@ public class BulletController : MonoBehaviour
         if (enemy != null)
         {
             Debug.Log("hit enemy!");
-            enemy.hurt(50);
+            enemy.hurt(JourneyManager.getInstance().atts[2]);
         }
         Destroy(this.gameObject);
     }
