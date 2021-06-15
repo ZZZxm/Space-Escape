@@ -19,25 +19,35 @@ public class RoleSelect : MonoBehaviour
             {
                 i=0;
                 costs=0;
-                break;
+                    JourneyManager.getInstance().playerHPMax = 500;
+                    JourneyManager.getInstance().atts[0] = JourneyManager.getInstance().playerHPMax;
+                    JourneyManager.getInstance().playerCurHP = JourneyManager.getInstance().playerHPMax;
+                    break;
             }
              case "role1":
             {
                 i=1;
                 costs=200;
-                break;
+                    JourneyManager.getInstance().playerHPMax = 500;
+                    JourneyManager.getInstance().atts[0] = JourneyManager.getInstance().playerHPMax;
+                    JourneyManager.getInstance().playerCurHP = JourneyManager.getInstance().playerHPMax;
+                    break;
             }
              case "role2":
             {
                 i=2;
                 costs=500;
-                break;
+                    JourneyManager.getInstance().playerHPMax = 500;
+                    JourneyManager.getInstance().atts[0] = JourneyManager.getInstance().playerHPMax;
+                    JourneyManager.getInstance().playerCurHP = JourneyManager.getInstance().playerHPMax;
+                    break;
             }
             default:
             {
                 break;
             }
         }
+        
     }
 
     public void OnValueChanged(bool value)

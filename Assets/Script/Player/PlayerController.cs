@@ -18,6 +18,12 @@ public abstract class PlayerController : MonoBehaviour
     
     protected Vector2 lookDirection = new Vector2(0, -1);
 
+    private void Awake()
+    {
+        totalBlood = JourneyManager.getInstance().playerHPMax;
+        currentBlood = JourneyManager.getInstance().playerCurHP;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,11 +31,13 @@ public abstract class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
         rb2D = GetComponent<Rigidbody2D>();
+        
     }
 
     // Update is called once per frame
     protected void Update()
     {
+        Debug.Log("currentBlood: "+currentBlood);
         if (currentBlood <= 0)
         {
             animator.SetTrigger("Death");
@@ -102,9 +110,9 @@ public abstract class PlayerController : MonoBehaviour
         }
         
         this.currentBlood -= deltaBlood;
-        // JourneyManager.getInstance().ChangePlayerHP(-deltaBlood);
+        JourneyManager.getInstance().ChangePlayerHP(-deltaBlood);
         animator.SetTrigger("Hit");
-        Debug.Log("Player blood left: " + currentBlood);
+        //Debug.Log("Player blood left: " + currentBlood);
     }
 
     public int getCurrentBlood()

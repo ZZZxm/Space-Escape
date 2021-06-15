@@ -16,14 +16,15 @@ public class GamePlayerGenerator : MonoBehaviour
         if (playerInfo % 3 == 1)
         {
             Instantiate(player, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+            
         }
         else if (playerInfo % 3 == 0)
-        {
-            Instantiate(playerBlue, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+        { 
+            Instantiate(PlayerSword, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
         }
         else if (playerInfo % 3 == 2)
         {
-            Instantiate(PlayerSword, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+            Instantiate(playerBlue, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
         }
     }
 
