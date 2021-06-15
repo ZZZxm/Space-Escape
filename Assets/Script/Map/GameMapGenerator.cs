@@ -14,6 +14,8 @@ public class GameMapGenerator : MonoBehaviour
 
     public int totalBoxNumber;
 
+    public bool hasWall = true;
+
     private List<GameObject> roomList = new List<GameObject>();
 
     private int[] dirx = { 1, 0, -1, 0 };
@@ -26,6 +28,7 @@ public class GameMapGenerator : MonoBehaviour
     {
         roomNumber = JourneyManager.getInstance().roomNumber;
         totalBoxNumber = JourneyManager.getInstance().boxNum;
+        hasWall = JourneyManager.getInstance().hasWall;
 
         int[] roomBoxArr = new int[roomNumber];
         for (int i = 0; i < roomNumber; i++)
@@ -82,6 +85,7 @@ public class GameMapGenerator : MonoBehaviour
         for (int i = 0; i < roomNumber; i++)
         {
             GameObject newRoom = Instantiate(mapPrefab, new Vector3(roomPos[i, 0], roomPos[i, 1], 0.0f), Quaternion.identity);
+            newRoom.GetComponent<MapController>().hasWall = hasWall;
             newRoom.GetComponent<MapController>().boxNumber = roomBoxArr[i];
             roomList.Add(newRoom);
         }

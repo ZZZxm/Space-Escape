@@ -74,6 +74,8 @@ public class JourneyManager : MonoBehaviour
 
     public int tileStyle = 0;
 
+    public bool hasWall = true;
+
     /*关卡变量部分结束*/
 
 
@@ -155,7 +157,7 @@ public class JourneyManager : MonoBehaviour
             CLOTHMAP[3, j].Add("Patience", 0);
         }
         //四属性及血蓝量的初始化 必须在防具属性初始化之后
-        //InitializedWithClothes();
+        InitializedWithClothes();
         //四种道具效果初始化
         ITEMPOWER[0] = 50;
         ITEMPOWER[1] = 50;
@@ -165,6 +167,7 @@ public class JourneyManager : MonoBehaviour
         boxNum = 3;
         winCase = 2;
         money = 500;
+        hasWall = true;
         initWincase();
         /*  --------------------------------        JourneyManager一些属性的初始化     ----------------------------------      */
         unitScript = GetComponent<UnitManager>();
@@ -378,7 +381,6 @@ public class JourneyManager : MonoBehaviour
         {
             case 0:
             {
-              
                 //使用回血道具
                 if(playerCurHP==playerHPMax) return;
                 ChangePlayerHP(ITEMPOWER[0]);
@@ -614,10 +616,12 @@ public class JourneyManager : MonoBehaviour
         if (unitNum != LEVEL_PER_JOURNEY)
         {
             setWincase();
+            hasWall = true;
         }
         else
         {
             winCase = 3;
+            hasWall = false;
             setWincase(GameMode.Boss);
         }
         reloadScene("GameStart");
@@ -632,6 +636,7 @@ public class JourneyManager : MonoBehaviour
         if (unitNum != LEVEL_PER_JOURNEY)
         {
             initWincase();
+            hasWall = true;
         }
         //回合变量部分重置
         ResetJourneyManager();

@@ -22,6 +22,7 @@ public class MapController : MonoBehaviour
 
     public int[] hasPath = { 0, 0, 0, 0 };
     public int boxNumber = 0;
+    public bool hasWall = true;
 
     private int[,,] mapExample = {
             {{0, 0, 0 },{0, 1, 0 },{0, 0, 0 } },
@@ -36,9 +37,6 @@ public class MapController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-        
-
         curStyle = JourneyManager.getInstance().tileStyle;
         wallSprite = wallSpriteList[curStyle];
         floorSprite = floorSpriteList[curStyle];
@@ -61,25 +59,9 @@ public class MapController : MonoBehaviour
 
         initTiles();
 
-        for (int i = 0; i < 50; i++)
+        if (hasWall)
         {
-            int xPos = Random.Range(-12, 12);
-            int yPos = Random.Range(-12, 12);
-
-            if (checkPixelAvailable(xPos, yPos, 3))
-            {
-                int mdl = Random.Range(0, 7);
-                for (int j = 0; j < 3; j++)
-                {
-                    for (int k = 0; k < 3; k++)
-                    {
-                        if (mapExample[mdl, j, k] == 1)
-                        {
-                            wallLayer.SetTile(new Vector3Int(xPos -1 + j, yPos - 1 + k, 0), wallTile);
-                        }
-                    }
-                }
-            }
+            addWall();
         }
 
         int curBox = 0, attemp = 0;
@@ -197,6 +179,30 @@ public class MapController : MonoBehaviour
                     groundLayer.SetTile(new Vector3Int(-18 - i, j, 0), floorTile);
                     groundLayer.SetTile(new Vector3Int(j, 17 + i, 0), floorTile);
                     groundLayer.SetTile(new Vector3Int(j, -18 - i, 0), floorTile);
+                }
+            }
+        }
+    }
+
+    public void addWall()
+    {
+        for (int i = 0; i < 50; i++)
+        {
+            int xPos = Random.Range(-12, 12);
+            int yPos = Random.Range(-12, 12);
+
+            if (checkPixelAvailable(xPos, yPos, 3))
+            {
+                int mdl = Random.Range(0, 7);
+                for (int j = 0; j < 3; j++)
+                {
+                    for (int k = 0; k < 3; k++)
+                    {
+                        if (mapExample[mdl, j, k] == 1)
+                        {
+                            wallLayer.SetTile(new Vector3Int(xPos - 1 + j, yPos - 1 + k, 0), wallTile);
+                        }
+                    }
                 }
             }
         }
