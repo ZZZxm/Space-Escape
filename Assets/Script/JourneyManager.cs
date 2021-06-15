@@ -61,6 +61,7 @@ public class JourneyManager : MonoBehaviour
    /*此处开始为关卡变量*/
    public int boxNum=0;  //当前关卡剩余宝箱数
    public int winCase=0;  //当前关卡胜利条件，需手动调gameui更改
+    public PlayerController playerController;
 
    //public bool canOut=false; //能否通过关卡出口进入下一关，无Ui
 
@@ -375,6 +376,7 @@ public class JourneyManager : MonoBehaviour
                 //使用回血道具
                 if(playerCurHP==playerHPMax) return;
                 ChangePlayerHP(ITEMPOWER[0]);
+                    playerController.addHp(ITEMPOWER[0]);
                 ChangeItems(0,-1);
                 break;
             }

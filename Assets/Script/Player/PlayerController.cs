@@ -22,6 +22,7 @@ public abstract class PlayerController : MonoBehaviour
     {
         totalBlood = JourneyManager.getInstance().playerHPMax;
         currentBlood = JourneyManager.getInstance().playerCurHP;
+        JourneyManager.getInstance().playerController = this;
     }
 
     // Start is called before the first frame update
@@ -113,6 +114,11 @@ public abstract class PlayerController : MonoBehaviour
         JourneyManager.getInstance().ChangePlayerHP(-deltaBlood);
         animator.SetTrigger("Hit");
         //Debug.Log("Player blood left: " + currentBlood);
+    }
+
+    public void addHp(int delta)
+    {
+        this.currentBlood += delta;
     }
 
     public int getCurrentBlood()
