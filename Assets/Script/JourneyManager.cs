@@ -34,7 +34,7 @@ public class JourneyManager : MonoBehaviour
 
     public EnemyGenerator enemyGenerator;
 
-    public int LEVEL_PER_JOURNEY = 3;
+    public int LEVEL_PER_JOURNEY = 9;
 
     /*全局变量部分结束*/
 
@@ -96,7 +96,7 @@ public class JourneyManager : MonoBehaviour
         unitNum = 1;
         playNum = 1;
         winNum = 0;
-        LEVEL_PER_JOURNEY = 3;
+        LEVEL_PER_JOURNEY = 9;
         //道具数量初始化
         items[0] = 5;
         items[1] = 5;

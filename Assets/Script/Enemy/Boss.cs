@@ -6,7 +6,7 @@ public class Boss : Enemy
 {
     public float attackRange = 12.0f;
 
-    public float attackWidth = 12.0f;
+    public float attackWidth = 20.0f;
     // Start is called before the first frame update    
     new void Start()
     {
@@ -14,11 +14,29 @@ public class Boss : Enemy
         // 怪物属性设置
         int bonus = JourneyManager.getInstance().winNum;
 
-        this.maxBlood = 1000 + bonus * 500;
+        this.maxBlood = 5000 + bonus * 500;
         this.blood = this.maxBlood;
         this.attack = 100 + bonus * 10;
         this.defend = 10 + bonus * 10;
         this.viewRadius = 150.0f;
+    }
+
+    new void Update()
+    {
+        base.Update();
+        Vector3 dir = target.position - transform.position;
+        float dis = dir.sqrMagnitude;
+        Debug.Log("Boss Update");
+
+        if (dis < 20.0f)
+        {
+            animator.SetBool("Attack", true);
+            // Debug.Log("You attack the player!");
+        }
+        else
+        {
+            animator.SetBool("Attack", false);
+        }
     }
 
     // Update is called once per frame
