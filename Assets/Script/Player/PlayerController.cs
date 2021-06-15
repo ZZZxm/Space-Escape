@@ -49,7 +49,7 @@ public abstract class PlayerController : MonoBehaviour
     // Update is called once per frame
     protected void Update()
     {
-        Debug.Log("currentBlood: "+currentBlood);
+        //Debug.Log("currentBlood: "+currentBlood);
         if (currentBlood <= 0)
         {
             animator.SetTrigger("Death");

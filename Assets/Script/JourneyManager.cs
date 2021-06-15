@@ -157,8 +157,8 @@ public class JourneyManager : MonoBehaviour
         //四属性及血蓝量的初始化 必须在防具属性初始化之后
         //InitializedWithClothes();
         //四种道具效果初始化
-        ITEMPOWER[0] = 5;
-        ITEMPOWER[1] = 5;
+        ITEMPOWER[0] = 50;
+        ITEMPOWER[1] = 50;
         ITEMPOWER[2] = 5;
         ITEMPOWER[3] = 5;
 

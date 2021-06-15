@@ -17,7 +17,17 @@ public class BulletLargeController : BulletController
 
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+    //    if (enemy != null)
+    //    {
+    //        Debug.Log("large bullet hit enemy!");
+    //        enemy.hurt(enemy.maxBlood);
+    //    }
+    //    Destroy(this.gameObject);
+    //}
+    private void OnTriggerEnter2D (Collision2D collision)
     {
         Enemy enemy = collision.gameObject.GetComponent<Enemy>();
         if (enemy != null)
@@ -25,6 +35,5 @@ public class BulletLargeController : BulletController
             Debug.Log("large bullet hit enemy!");
             enemy.hurt(enemy.maxBlood);
         }
-        Destroy(this.gameObject);
     }
 }
