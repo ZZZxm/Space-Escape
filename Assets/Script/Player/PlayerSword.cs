@@ -32,7 +32,7 @@ public class PlayerSword : PlayerController
     }
 
     // Update is called once per frame
-    protected void Update()
+    new protected void Update()
     {
         base.Update();
         float faceDirection = Input.GetAxisRaw("Horizontal");
@@ -52,9 +52,8 @@ public class PlayerSword : PlayerController
         {
             this.curMP -= deltaQMP;
             JourneyManager.getInstance().ChangePlayerMP(-deltaQMP);
-            attackDown *= 2;
-            attackUp *= 2;
-            attackSide *= 2;
+            animator.SetTrigger("Attack");
+            JourneyManager.getInstance().atts[2] *= 2;
             StartCoroutine(DisableQSkill());
         }
     }
@@ -62,9 +61,7 @@ public class PlayerSword : PlayerController
     IEnumerator DisableQSkill()
     {
         yield return new WaitForSeconds(2);
-        attackDown /= 2;
-        attackUp /= 2;
-        attackSide /= 2;
+        JourneyManager.getInstance().atts[2] /= 2;
     }
 
     public override void eSkill()
