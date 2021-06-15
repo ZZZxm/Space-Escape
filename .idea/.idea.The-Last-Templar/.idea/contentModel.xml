@@ -244,6 +244,7 @@
             <e p="GameMapGenerator.cs" t="Include" />
             <e p="MapController.cs" t="Include" />
             <e p="PropCollision.cs" t="Include" />
+            <e p="TrapController.cs" t="Include" />
           </e>
           <e p="MapGenerator.cs" t="Include" />
           <e p="Money.cs" t="Include" />
