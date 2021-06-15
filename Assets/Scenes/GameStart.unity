@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a750435f6a9e5c24b9b9d92e6c97abd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapPrefab: {fileID: 2262476505437410314, guid: 88a7f60180454f046ba093fb804c827b,
+  mapPrefab: {fileID: 2262476505437410314, guid: 311226a6669acde419c83e4afbe7fb95,
     type: 3}
   roomNumber: 4
   xOffset: 50

@@ -20,15 +20,25 @@ public class MapController : MonoBehaviour
 
     private Tile wallTile, floorTile, boxTile, trapTile;
 
-    // public bool hasLeftEdge = false;
-    // public bool hasRightEdge = false;
-
     public int[] hasPath = { 0, 0, 0, 0 };
     public int boxNumber = 0;
+
+    private int[,,] mapExample = {
+            {{0, 0, 0 },{0, 1, 0 },{0, 0, 0 } },
+            {{0, 0, 0 },{1, 1, 1 },{0, 0, 0 } },
+            {{0, 1, 0 },{0, 1, 0 },{0, 1, 0 } },
+            {{0, 1, 0 },{1, 1, 1 },{0, 1, 0 } },
+            {{1, 1, 0 },{1, 1, 0 },{0, 0, 0 } },
+            {{0, 0, 0 },{0, 1, 1 },{0, 1, 1 } },
+            {{1, 1, 1 },{1, 1, 1 },{1, 1, 1 } }
+        };
 
     // Start is called before the first frame update
     void Start()
     {
+
+        
+
         curStyle = JourneyManager.getInstance().tileStyle;
         wallSprite = wallSpriteList[curStyle];
         floorSprite = floorSpriteList[curStyle];
@@ -51,26 +61,48 @@ public class MapController : MonoBehaviour
 
         initTiles();
 
-        for (int i = 0; i < 40; i++)
+        for (int i = 0; i < 50; i++)
         {
-            int xPos = Random.Range(-13, 13);
-            int yPos = Random.Range(-13, 13);
+            int xPos = Random.Range(-12, 12);
+            int yPos = Random.Range(-12, 12);
 
-            if (!wallLayer.HasTile(new Vector3Int(xPos, yPos, 0)))
+            if (checkPixelAvailable(xPos, yPos, 3))
             {
-                wallLayer.SetTile(new Vector3Int(xPos, yPos, 0), wallTile);
+                int mdl = Random.Range(0, 7);
+                for (int j = 0; j < 3; j++)
+                {
+                    for (int k = 0; k < 3; k++)
+                    {
+                        if (mapExample[mdl, j, k] == 1)
+                        {
+                            wallLayer.SetTile(new Vector3Int(xPos -1 + j, yPos - 1 + k, 0), wallTile);
+                        }
+                    }
+                }
             }
-            
         }
 
-        int curBox = 0;
+        int curBox = 0, attemp = 0;
+
+        while (curBox < boxNumber && attemp < 100)
+        {
+            int xPos = Random.Range(-15, 15);
+            int yPos = Random.Range(-15, 15);
+
+            if (checkPixelAvailable(xPos, yPos, 4))
+            {
+                propLayer.SetTile(new Vector3Int(xPos, yPos, 0), boxTile);
+                curBox++;
+            }
+            attemp++;
+        }
 
         while (curBox < boxNumber)
         {
             int xPos = Random.Range(-15, 15);
             int yPos = Random.Range(-15, 15);
 
-            if (checkPixelAvailable(xPos, yPos))
+            if (checkPixelAvailable(xPos, yPos, 1))
             {
                 propLayer.SetTile(new Vector3Int(xPos, yPos, 0), boxTile);
                 curBox++;
@@ -95,11 +127,11 @@ public class MapController : MonoBehaviour
         
     }
 
-    private bool checkPixelAvailable(int x, int y)
+    private bool checkPixelAvailable(int x, int y, int r)
     {
-        for (int p = -2; p <= 2; p++)
+        for (int p = -r; p <= r; p++)
         {
-            for (int q = -2; q <= 2; q++)
+            for (int q = -r; q <= r; q++)
             {
                 int curX = x + p;
                 int curY = y + q;
@@ -232,11 +264,10 @@ public class MapController : MonoBehaviour
 
     public void addTrap()
     {
-        // Debug.Log("add trap");
         int xPos = Random.Range(-15, 15);
         int yPos = Random.Range(-15, 15);
 
-        if (checkPixelAvailable(xPos, yPos))
+        if (checkPixelAvailable(xPos, yPos, 2))
         {
             trapLayer.SetTile(new Vector3Int(xPos, yPos, 0), trapTile);
         }
