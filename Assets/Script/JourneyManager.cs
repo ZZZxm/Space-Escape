@@ -130,14 +130,14 @@ public class JourneyManager : MonoBehaviour
         }
         for (int j = 0; j < 4; ++j)    //帽子
         {
-            CLOTHMAP[0, j].Add("HP", 50 * (j + 1));
+            CLOTHMAP[0, j].Add("HP", 0);
             CLOTHMAP[0, j].Add("MP", 0);
             CLOTHMAP[0, j].Add("Agile", 0);
-            CLOTHMAP[0, j].Add("Patience", 0);
+            CLOTHMAP[0, j].Add("Patience", 50 * (j + 1));
         }
         for (int j = 0; j < 4; ++j)     //护甲
         {
-            CLOTHMAP[1, j].Add("HP", 0);
+            CLOTHMAP[1, j].Add("HP", 50 * (j + 1));
             CLOTHMAP[1, j].Add("MP", 0);
             CLOTHMAP[1, j].Add("Agile", 0);
             CLOTHMAP[1, j].Add("Patience", 0);
@@ -145,7 +145,7 @@ public class JourneyManager : MonoBehaviour
         for (int j = 0; j < 4; ++j)    //鞋子
         {
             CLOTHMAP[2, j].Add("HP", 0);
-            CLOTHMAP[2, j].Add("MP", 0);
+            CLOTHMAP[2, j].Add("MP",50 * (j + 1));
             CLOTHMAP[2, j].Add("Agile", 0);
             CLOTHMAP[2, j].Add("Patience", 0);
         }
@@ -153,7 +153,7 @@ public class JourneyManager : MonoBehaviour
         {
             CLOTHMAP[3, j].Add("HP", 0);
             CLOTHMAP[3, j].Add("MP", 0);
-            CLOTHMAP[3, j].Add("Agile", 0);
+            CLOTHMAP[3, j].Add("Agile", 50 * (j + 1));
             CLOTHMAP[3, j].Add("Patience", 0);
         }
         //四属性及血蓝量的初始化 必须在防具属性初始化之后
