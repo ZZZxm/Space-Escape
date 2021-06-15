@@ -169,6 +169,11 @@ public class JourneyManager : MonoBehaviour
         /*  --------------------------------        JourneyManager一些属性的初始化     ----------------------------------      */
         unitScript = GetComponent<UnitManager>();
         //gameUIScript = GetComponent<GameUIController>();
+        
+        atts[0] = 100;
+        atts[1] = 100;
+        atts[2] = 100;
+        atts[3] = 100;
     }
 
     public void ResetJourneyManager()  //回合之间切换一些变量的重置
