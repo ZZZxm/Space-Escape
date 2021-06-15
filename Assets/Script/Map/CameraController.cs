@@ -35,6 +35,7 @@ public class CameraController : MonoBehaviour
 
         Vector3 targetPosition = playerPosition.position + playerPosition.TransformDirection(offset);
 
+        /*
         if (playerPosition.position.x < -10.0f)
         {
             targetPosition.x = transform.position.x;
@@ -44,6 +45,7 @@ public class CameraController : MonoBehaviour
         {
             targetPosition.y = transform.position.y;
         }
+        */
 
         transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * cameraSpeed);
 

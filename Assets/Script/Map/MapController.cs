@@ -20,8 +20,10 @@ public class MapController : MonoBehaviour
 
     private Tile wallTile, floorTile, boxTile, trapTile;
 
-    public bool hasLeftEdge = false;
-    public bool hasRightEdge = false;
+    // public bool hasLeftEdge = false;
+    // public bool hasRightEdge = false;
+
+    public int[] hasPath = { 0, 0, 0, 0 };
     public int boxNumber = 0;
 
     // Start is called before the first frame update
@@ -75,17 +77,14 @@ public class MapController : MonoBehaviour
             }
         }
 
-        if (hasLeftEdge)
+        for (int i = 0; i < 4; i++)
         {
-            addEdge(true);
+            if (hasPath[i] == 0)
+            {
+                addEdge(i);
+            }
         }
 
-        if (hasRightEdge)
-        {
-            addEdge(false);
-        }
-
-        // Debug.Log("start trap");
         InvokeRepeating("addTrap", 1, 5);
 
     }
@@ -119,7 +118,7 @@ public class MapController : MonoBehaviour
         {
             for (int j = -18; j < 18; j++)
             {
-                if ((j >= -3 && j < 3) ||(i >= -15 && i < 15 && j >= -15 && j < 15))
+                if ((i >= -3 && i < 3) || (j >= -3 && j < 3) ||(i >= -15 && i < 15 && j >= -15 && j < 15))
                 {
                     groundLayer.SetTile(new Vector3Int(i, j, 0), floorTile);
                 }
@@ -137,6 +136,8 @@ public class MapController : MonoBehaviour
                 {
                     wallLayer.SetTile(new Vector3Int(17 + i, j, 0), wallTile);
                     wallLayer.SetTile(new Vector3Int(-18 - i, j, 0), wallTile);
+                    wallLayer.SetTile(new Vector3Int(j, 17 + i, 0), wallTile);
+                    wallLayer.SetTile(new Vector3Int(j, -18 - i, 0), wallTile);
                 }
             }
             else
@@ -145,12 +146,33 @@ public class MapController : MonoBehaviour
                 {
                     groundLayer.SetTile(new Vector3Int(17 + i, j, 0), floorTile);
                     groundLayer.SetTile(new Vector3Int(-18 - i, j, 0), floorTile);
+                    groundLayer.SetTile(new Vector3Int(j, 17 + i, 0), floorTile);
+                    groundLayer.SetTile(new Vector3Int(j, -18 - i, 0), floorTile);
                 }
             }
         }
     }
 
-    public void addEdge(bool leftEdge)
+    public void addEdge(int dir)
+    {
+        switch(dir)
+        {
+            case 0:
+                addHorizenEdge(false);
+                break;
+            case 1:
+                addVerticalEdge(false);
+                break;
+            case 2:
+                addHorizenEdge(true);
+                break;
+            case 3:
+                addVerticalEdge(true);
+                break;
+        }
+    }
+
+    public void addHorizenEdge(bool leftEdge)
     {
         int start = 15, dir = 1;
         if (leftEdge)
@@ -174,6 +196,35 @@ public class MapController : MonoBehaviour
                 {
                     groundLayer.SetTile(new Vector3Int(curPos, j, 0), null);
                     wallLayer.SetTile(new Vector3Int(curPos, j, 0), null);
+                }
+            }
+        }
+    }
+
+    public void addVerticalEdge(bool upEdge)
+    {
+        int start = 15, dir = 1;
+        if (upEdge)
+        {
+            start = -16;
+            dir = -1;
+        }
+        for (int i = 0; i < 10; i++)
+        {
+            int curPos = start + dir * i;
+            if (i < 3)
+            {
+                for (int j = -3; j < 3; j++)
+                {
+                    wallLayer.SetTile(new Vector3Int(j, curPos, 0), wallTile);
+                }
+            }
+            else
+            {
+                for (int j = -6; j < 6; j++)
+                {
+                    groundLayer.SetTile(new Vector3Int(j, curPos, 0), null);
+                    wallLayer.SetTile(new Vector3Int(j, curPos, 0), null);
                 }
             }
         }

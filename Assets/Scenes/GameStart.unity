@@ -154,6 +154,7 @@ MonoBehaviour:
     type: 3}
   roomNumber: 4
   xOffset: 50
+  yOffset: 50
   totalBoxNumber: 18
 --- !u!4 &44044311
 Transform:
