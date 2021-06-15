@@ -1,0 +1,42 @@
+﻿<Properties StartupConfiguration="{917CF327-7A1E-8581-29CE-DAD69CB4964F}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/Player/BulletLargeController.cs">
+    <Files>
+      <File FileName="Assets/Script/Player/PlayerController.cs" Line="52" Column="11" />
+      <File FileName="Assets/Script/Player/AstronautPlayer.cs" Line="18" Column="1" />
+      <File FileName="Assets/Script/Player/PlayerBlue.cs" Line="77" Column="1" />
+      <File FileName="Assets/Script/RoleSelect.cs" Line="30" Column="18" />
+      <File FileName="Assets/Script/JourneyManager.cs" Line="170" Column="24" />
+      <File FileName="Assets/Script/HPbar.cs" Line="23" Column="16" />
+      <File FileName="Assets/Script/Map/GameMapGenerator.cs" Line="31" Column="56" />
+      <File FileName="Assets/Script/Player/BulletController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Script/Map/MapController.cs" Line="39" Column="6" />
+      <File FileName="Assets/Script/Enemy/FlyingMonster.cs" Line="15" Column="34" />
+      <File FileName="Assets/Script/Enemy/Boss.cs" Line="40" Column="1" />
+      <File FileName="Assets/Script/Player/BulletLargeController.cs" Line="29" Column="6" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="The-Last-Templar" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Script" expanded="True">
+                <Node name="Enemy" expanded="True" />
+                <Node name="Map" expanded="True" />
+                <Node name="Player" expanded="True">
+                  <Node name="BulletLargeController.cs" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="94256399-82e1-4937-9eca-2de5ecdde524" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
