@@ -14,7 +14,7 @@ public class Boss : Enemy
         // 怪物属性设置
         int bonus = JourneyManager.getInstance().winNum;
 
-        this.maxBlood = 5000 + bonus * 500;
+        this.maxBlood = 1000 + bonus * 500;
         this.blood = this.maxBlood;
         this.attack = 100 + bonus * 10;
         this.defend = 10 + bonus * 10;

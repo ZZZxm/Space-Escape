@@ -96,7 +96,7 @@ public class JourneyManager : MonoBehaviour
         unitNum = 1;
         playNum = 1;
         winNum = 0;
-        LEVEL_PER_JOURNEY = 9;
+        LEVEL_PER_JOURNEY = 2;
         //道具数量初始化
         items[0] = 5;
         items[1] = 5;
@@ -176,11 +176,11 @@ public class JourneyManager : MonoBehaviour
 
     public void ResetJourneyManager()  //回合之间切换一些变量的重置
     {
-        //道具数量初始化
-        items[0] = 0;
-        items[1] = 0;
-        items[2] = 0;
-        items[3] = 0;
+        // //道具数量初始化
+        // items[0] = 0;
+        // items[1] = 0;
+        // items[2] = 0;
+        // items[3] = 0;
 
         //拥有防具数量初始化
         for (int i = 0; i < 4; ++i)
@@ -500,7 +500,26 @@ public class JourneyManager : MonoBehaviour
     private void initWincase()
     {
         //winCase = 3;
-        winCase = Random.Range(0, 3);
+        switch (winNum)
+        {
+            case 0:
+            {
+                winCase = 0;
+                break;
+            }
+            case 1:
+            {
+                winCase = 1;
+                break;
+            }
+            case 2:
+            {
+                winCase = 2;
+                break;
+            }
+        }
+
+
         // 根据wincase设置敌人生成
         switch (winCase)
         {
@@ -513,8 +532,8 @@ public class JourneyManager : MonoBehaviour
             }
             case 1:
             {
-                roomNumber = 7;
-                boxNum = 12;
+                roomNumber = 5;
+                boxNum = 8;
                 // enemyGenerator.SetGameMode(GameMode.TreasureAll);
                 break;
             }

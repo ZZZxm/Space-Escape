@@ -171,7 +171,7 @@ public class EnemyGenerator : MonoBehaviour
     {
         // 击败所有敌人
         intervalTime = 5.0f;
-        MAX_ENEMIES = 10;
+        MAX_ENEMIES = 3;
         InvokeRepeating("CreateSmallMonster", 0.5f, intervalTime);
     }
 
