@@ -12,7 +12,7 @@ public class GreenMonster : Enemy
         // 怪物属性设置
         int bonus = JourneyManager.getInstance().winNum;
 
-        this.maxBlood = 500 + bonus * 40;
+        this.maxBlood = 600 + bonus * 60;
         this.blood = this.maxBlood;
         this.attack = 40 + bonus * 7;
         this.defend = 30 + bonus * 3;
