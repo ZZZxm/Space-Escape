@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2630717638636278765
+--- !u!1 &8278366520114480675
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,12 +8,12 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2630717638636278757}
-  - component: {fileID: 2630717638636278756}
-  - component: {fileID: 2630717638636278755}
-  - component: {fileID: 2630717638636278753}
-  - component: {fileID: 2630717638636278752}
-  - component: {fileID: 2630717638636278767}
+  - component: {fileID: 313608264302761182}
+  - component: {fileID: 8012579858911968566}
+  - component: {fileID: 3864909255401036403}
+  - component: {fileID: 7292808534619873060}
+  - component: {fileID: 767768377216460192}
+  - component: {fileID: 4516056732063708197}
   m_Layer: 0
   m_Name: journeyManager
   m_TagString: Untagged
@@ -21,13 +21,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2630717638636278757
+--- !u!4 &313608264302761182
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2630717638636278765}
+  m_GameObject: {fileID: 8278366520114480675}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 451.8583, y: 209.3458, z: -37.471092}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -35,13 +35,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2630717638636278756
+--- !u!114 &8012579858911968566
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2630717638636278765}
+  m_GameObject: {fileID: 8278366520114480675}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32808d385abb82d41b6235ae5d281f1a, type: 3}
@@ -50,7 +50,10 @@ MonoBehaviour:
   gameUIScript: {fileID: 0}
   money: 20
   playNum: 1
+  winNum: 0
   ITEMPOWER: 00000000000000000000000000000000
+  enemyGenerator: {fileID: 0}
+  LEVEL_PER_JOURNEY: 9
   playerHPMax: 100
   playerCurHP: 100
   playerMPMax: 100
@@ -65,57 +68,57 @@ MonoBehaviour:
   isWin: 0
   boxNum: 0
   winCase: 0
-  canOut: 0
+  playerController: {fileID: 0}
   unitTime: 0
-  enterTime: 0
   roomNumber: 2
   tileStyle: 0
---- !u!114 &2630717638636278755
+  hasWall: 1
+--- !u!114 &3864909255401036403
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2630717638636278765}
+  m_GameObject: {fileID: 8278366520114480675}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4431bdf2ec606294a97198f49451b509, type: 3}
+  m_Script: {fileID: 11500000, guid: 02d583f8d5dd77648b17f9fe55cdd613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2630717638636278753
+--- !u!114 &7292808534619873060
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2630717638636278765}
+  m_GameObject: {fileID: 8278366520114480675}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eac73fd8eb2521441af7e3b9b4fd4c29, type: 3}
+  m_Script: {fileID: 11500000, guid: 2413bbc14338cc9408671a071ec68022, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2630717638636278752
+--- !u!114 &767768377216460192
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2630717638636278765}
+  m_GameObject: {fileID: 8278366520114480675}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5b2be5c43ec90743a3ff7a912cf2ece, type: 3}
+  m_Script: {fileID: 11500000, guid: d583090e9dfa8e3499ff2938eb2ed8d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   trapTiles: []
---- !u!114 &2630717638636278767
+--- !u!114 &4516056732063708197
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2630717638636278765}
+  m_GameObject: {fileID: 8278366520114480675}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7834d5ce54d0b3b428cf450f4449f6b7, type: 3}
+  m_Script: {fileID: 11500000, guid: 91fad5522e6fa8945bcd11d06d16ea10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

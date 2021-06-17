@@ -1,6 +1,9 @@
 # 太空逃生 Space Escape
 
+> 项目地址：https://github.com/ZZZxm/Space-Escape
+
 ## 游戏背景
+
 公元xxxx年，一批宇航员因宇宙飞船故障意外降临到了太空中一个神秘的星球，在这里他们不仅见识到了前所未有的奇异景色，也惊喜地发现这星球上居然存在着为数众多的生命。虽然这里绝大多数外星生命都是友好而胆怯的，仍有一些较为强大的生物自恃尖牙利爪，对遇见的宇航员不由分说地展开进攻。宇航员们一边维修飞船，一边探索着这片土地，同时抵抗不那么友善的外星居民，可渐渐地他们意识到，有什么事情开始不对劲了......这一切都像是一个永无休止的循环。
 
 ## 游戏类型
@@ -72,20 +75,20 @@ Player3太空炸弹人：
 ## 游戏设计
 ### 整体流程设计
 
-![](docpic/flowchart.png)
+![](README.assets/flowchart.png)
 
 #### 变量流程设计
 **全局变量设计**
 
-![](docpic/var1.png)
+![](README.assets/var1.png)
 
 **回合变量设计**
 
-![](docpic/var2.png)
+![](README.assets/var2.png)
 
 **关卡变量设计**
 
-![](docpic/var3.png)
+![](README.assets/var3.png)
 
 
 
@@ -97,7 +100,7 @@ Player3太空炸弹人：
 玩家均包含方向控制、攻击、闪避操作，其中闪避操作的实现是通过协程控制参数使得玩家在一段时间内向反方向移动，并在该段时间内减免一半的伤害。
 #### Player1近战砍刀
 
-![](docpic/player1.png)
+![](README.assets/player1.png)
 
 |攻击| 效果|
 |---|---|
@@ -116,7 +119,7 @@ Player3太空炸弹人：
 
 #### Player2远程射击
 
-![](docpic/player2.png)
+![](README.assets/player2.png)
 
 |攻击| 效果|
 |---|---|
@@ -132,7 +135,7 @@ Player3太空炸弹人：
 
 #### Player3炸弹人
 
-![](docpic/player3.png)
+![](README.assets/player3.png)
 
 |攻击| 效果|
 |---|---|
@@ -185,7 +188,22 @@ Player3太空炸弹人：
 
 #### 敌人AI
 
+**敌人状态**
 
+| 敌人状态     | 触发条件                                                     |
+| ------------ | ------------------------------------------------------------ |
+| 待机（静止） | 敌人生成时的默认状态<br />*注：“存活30s“关卡中敌人默认状态为追踪* |
+| 追踪         | 玩家进入敌人的视野范围                                       |
+| 攻击         | 玩家进入敌人的攻击范围                                       |
+| 死亡         | 敌人血量降为0                                                |
+
+**A\*搜索算法**
+
+游戏中的敌人使用**A\*搜索算法**（A* search algorithm）来进行自动寻路寻找玩家，**A\*搜索算法**是一种在图形平面上，有多个节点的路径，求出最低通过成本的算法。
+
+该算法综合了最良优先搜索和Dijkstra算法的优点：在进行启发式搜索提高算法效率的同时，可以保证找到一条最优路径（基于评估函数）。
+
+我们在``GameStart``场景中添加了``PathFinding``物体并为它添加了``Pathfinder``脚本，作为全局自动寻路的组件，可以设置自动寻路的属性，如寻路范围等。同时，还需要为每个需要自动寻路的Prefabs（即敌人）添加``AI Destination Setter``和``AI Path``脚本。脚本实现可以在``Script\Enemy\AstarPathfindingProject``中查看。
 
 #### 敌人生成机制
 
@@ -274,10 +292,10 @@ Map Prefab 中通过参数传入各个主题的瓦片素材，脚本 `JourneyMan
 ### 道具设计
 |道具类型|UI|效果|数量|备注|
 |---|---|---|---|---|
-|加HP道具|<img src="docpic/HP.png" alt="HP" style="zoom:50%;" />|加 5 HP|可为无限|满HP时无法使用|
-|加MP道具|<img src="docpic/MP.png" alt="MP" style="zoom:50%;"/>|加 5 MP|可为无限|满MP时无法使用|
-|加攻击值道具|<img src="docpic/agile.png" alt="agile" style="zoom:50%;" />|加 5 攻击值|可为无限|攻击值无上限|
-|加耐力值道具|<img src="docpic/patience.png" alt="patience" style="zoom:50%;" />|加 5防御值|可为无限|耐力值无上限|
+|加HP道具|<img src="README.assets/HP.png" alt="HP" style="zoom:50%;" />|加 5 HP|可为无限|满HP时无法使用|
+|加MP道具|<img src="README.assets/MP.png" alt="MP" style="zoom:50%;"/>|加 5 MP|可为无限|满MP时无法使用|
+|加攻击值道具|<img src="README.assets/agile.png" alt="agile" style="zoom:50%;" />|加 5 攻击值|可为无限|攻击值无上限|
+|加耐力值道具|<img src="README.assets/patience.png" alt="patience" style="zoom:50%;" />|加 5防御值|可为无限|耐力值无上限|
 
 #### 道具掉落
 
@@ -302,12 +320,51 @@ Map Prefab 中通过参数传入各个主题的瓦片素材，脚本 `JourneyMan
 
 #### 装备界面
 
-<img src="docpic/backup.png" alt="backup" style="zoom:60%;" />
+<img src="README.assets/backup.png" alt="backup" style="zoom:60%;" />
 
 * 防具下的四个槽分别对应帽子、护甲、鞋子、饰品
 * 获得装备后点击空槽可以在下拉框中选择要装备的防具
 
 ## 项目文件结构
+
+```
+├─Assets
+│  ├─Animations
+│  │  ├─AnimationControllers
+│  │  └─Animations
+│  ├─Resources
+│  │  ├─Music
+│  │  └─Prefabs
+│  │      ├─Enemy
+│  │      ├─Item
+│  │      └─Player
+│  ├─Scenes
+│  ├─Script
+│  │  ├─Enemy
+│  │  ├─GameControl
+│  │  ├─Item
+│  │  ├─Map
+│  │  ├─Player
+│  │  ├─UI
+│  │  └─Unit
+│  ├─Sprites
+│  │  ├─Map
+│  │  ├─Monsters
+│  │  ├─Player
+│  │  ├─PlayerBlue
+│  │  ├─PlayerSword
+│  │  └─UI
+│  ├─Tilemap
+│  └─_TerrainAutoUpgrade
+├─obj
+│  └─Debug
+├─Packages
+├─ProjectSettings
+├─README
+├─README.assets
+└─Temp
+    └─ProcessJobs
+```
 
 ## 小组成员分工
 
@@ -318,4 +375,3 @@ Map Prefab 中通过参数传入各个主题的瓦片素材，脚本 `JourneyMan
 | 1850250 | 赵浠明   | 敌人动画制作、敌人AI实现、敌人生成机制实现 |
 | 1852137 | 张艺腾   | 人物基类实现、玩家2动画制作&控制逻辑、人物技能设计、人物介绍界面设计 |
 | 1853829 | 杨雨辰   | 游戏地图制作，宝箱陷阱机制制作，关卡回合切换制作 |
-

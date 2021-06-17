@@ -227,10 +227,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 40826643}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9607b63117d442c4ba05dc59a52123b5, type: 3}
+  m_Script: {fileID: 11500000, guid: a474b3666be622241874ebc368264591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: {fileID: 364007091}
+  cost: {fileID: 0}
   i: 0
   costs: 0
   inform: {fileID: 1784202499}
@@ -516,7 +516,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 389483105}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2047bdbfef952934ea98eb02eb78ced7, type: 3}
+  m_Script: {fileID: 11500000, guid: e9dc8f90872a0594f8e0a08bf8c0885b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   money: {fileID: 2033619452}
@@ -1243,11 +1243,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 897767984}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a8cedbde9c91924c8ee26a92c928c14, type: 3}
+  m_Script: {fileID: 11500000, guid: 3afdaff571ab9454e90a4f667b8e97d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  journeyManager: {fileID: 2630717638636278765, guid: ca01cf6811dd7b443900adbe8044c598,
-    type: 3}
+  audioSource: {fileID: 0}
 --- !u!114 &897767989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1257,10 +1256,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 897767984}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e8b5cee4e481ca44b86946bf2abb2e8, type: 3}
+  m_Script: {fileID: 11500000, guid: feb3ce5a7da4d8c4e8ecd84b4203a896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 0}
+  journeyManager: {fileID: 8278366520114480675, guid: ca01cf6811dd7b443900adbe8044c598,
+    type: 3}
 --- !u!82 &897767990
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1273,7 +1273,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 18bb3dec7e059ea45879b5a9578e9078, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.21
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1463,10 +1463,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 973121792}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9607b63117d442c4ba05dc59a52123b5, type: 3}
+  m_Script: {fileID: 11500000, guid: a474b3666be622241874ebc368264591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: {fileID: 364007091}
+  cost: {fileID: 0}
   i: 0
   costs: 0
   inform: {fileID: 1784202499}
@@ -1650,10 +1650,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1050430153}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9607b63117d442c4ba05dc59a52123b5, type: 3}
+  m_Script: {fileID: 11500000, guid: a474b3666be622241874ebc368264591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: {fileID: 364007091}
+  cost: {fileID: 0}
   i: 0
   costs: 0
   inform: {fileID: 1784202499}

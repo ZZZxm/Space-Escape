@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using Pathfinding;
+using UI;
 
 //游戏整体进程的控制类
 //人物附加的全局变量如成就值或者在一个回合里的变量如金钱道具等都定义在这个类里
@@ -60,9 +61,9 @@ public class JourneyManager : MonoBehaviour
 
     public int isWin;  //当前回合是否成功逃脱，0表示失败，1表示成功
 
-   /*此处开始为关卡变量*/
-   public int boxNum=0;  //当前关卡剩余宝箱数
-   public int winCase=0;  //当前关卡胜利条件，需手动调gameui更改
+    /*此处开始为关卡变量*/
+    public int boxNum = 0;  //当前关卡剩余宝箱数
+    public int winCase = 0;  //当前关卡胜利条件，需手动调gameui更改
     public PlayerController playerController;
 
 
@@ -96,7 +97,7 @@ public class JourneyManager : MonoBehaviour
         unitNum = 1;
         playNum = 1;
         winNum = 0;
-        LEVEL_PER_JOURNEY = 2;
+        LEVEL_PER_JOURNEY = 9;
         //道具数量初始化
         items[0] = 5;
         items[1] = 5;
@@ -145,7 +146,7 @@ public class JourneyManager : MonoBehaviour
         for (int j = 0; j < 4; ++j)    //鞋子
         {
             CLOTHMAP[2, j].Add("HP", 0);
-            CLOTHMAP[2, j].Add("MP",50 * (j + 1));
+            CLOTHMAP[2, j].Add("MP", 50 * (j + 1));
             CLOTHMAP[2, j].Add("Agile", 0);
             CLOTHMAP[2, j].Add("Patience", 0);
         }
@@ -165,8 +166,7 @@ public class JourneyManager : MonoBehaviour
         ITEMPOWER[3] = 5;
 
         boxNum = 3;
-        winCase = 2;
-        money = 500;
+        money = 0;
         hasWall = true;
         initWincase();
         /*  --------------------------------        JourneyManager一些属性的初始化     ----------------------------------      */
@@ -381,47 +381,47 @@ public class JourneyManager : MonoBehaviour
         switch (i)
         {
             case 0:
-            {
-                //使用回血道具
-                itemInfo = "成功使用回血道具";
-                if (playerCurHP == playerHPMax) return;
-                ChangePlayerHP(ITEMPOWER[0]);
-                playerController.addHp();
-                ChangeItems(0, -1);
-                break;
-            }
-             case 1:
-            {
-                //使用回蓝道具
-                itemInfo = "成功使用回蓝道具";
-                if(playerCurMP==playerMPMax) return;
-                ChangePlayerMP(ITEMPOWER[1]);
-                playerController.addMp();
-                ChangeItems(1,-1);
-                break;
-            }
-             case 2:
-            {
-                //使用增敏道具
-                itemInfo = "成功使用增敏道具";
-                ChangeAtts(2,ITEMPOWER[2]);
-                playerController.addPower();
-                ChangeItems(2,-1);
-                break;
-            }
-             case 3:
-            {
-                //使用增耐道具
-                itemInfo = "成功使用增耐道具";
-                ChangeAtts(3,ITEMPOWER[3]);
-                playerController.addPatience();
-                ChangeItems(3,-1);
-                break;
-            }
+                {
+                    //使用回血道具
+                    itemInfo = "成功使用回血道具";
+                    if (playerCurHP == playerHPMax) return;
+                    ChangePlayerHP(ITEMPOWER[0]);
+                    playerController.addHp();
+                    ChangeItems(0, -1);
+                    break;
+                }
+            case 1:
+                {
+                    //使用回蓝道具
+                    itemInfo = "成功使用回蓝道具";
+                    if (playerCurMP == playerMPMax) return;
+                    ChangePlayerMP(ITEMPOWER[1]);
+                    playerController.addMp();
+                    ChangeItems(1, -1);
+                    break;
+                }
+            case 2:
+                {
+                    //使用增敏道具
+                    itemInfo = "成功使用增敏道具";
+                    ChangeAtts(2, ITEMPOWER[2]);
+                    playerController.addPower();
+                    ChangeItems(2, -1);
+                    break;
+                }
+            case 3:
+                {
+                    //使用增耐道具
+                    itemInfo = "成功使用增耐道具";
+                    ChangeAtts(3, ITEMPOWER[3]);
+                    playerController.addPatience();
+                    ChangeItems(3, -1);
+                    break;
+                }
             default:
-            {
-                break;
-            }
+                {
+                    break;
+                }
         }
         OpenBox(itemInfo);
         Invoke("clearPropInfo", 5);
@@ -499,56 +499,37 @@ public class JourneyManager : MonoBehaviour
 
     private void initWincase()
     {
-        //winCase = 3;
-        switch (winNum)
-        {
-            case 0:
-            {
-                winCase = 0;
-                break;
-            }
-            case 1:
-            {
-                winCase = 1;
-                break;
-            }
-            case 2:
-            {
-                winCase = 2;
-                break;
-            }
-        }
-
+        winCase = Random.Range(0, 3);
 
         // 根据wincase设置敌人生成
         switch (winCase)
         {
             case 0:
-            {
-                roomNumber = Random.Range(2, 5);
-                boxNum = 5;
-                // enemyGenerator.SetGameMode(GameMode.BeatAll);
-                break;
-            }
+                {
+                    roomNumber = Random.Range(2, 5);
+                    boxNum = 5;
+                    // enemyGenerator.SetGameMode(GameMode.BeatAll);
+                    break;
+                }
             case 1:
-            {
-                roomNumber = 5;
-                boxNum = 8;
-                // enemyGenerator.SetGameMode(GameMode.TreasureAll);
-                break;
-            }
+                {
+                    roomNumber = 5;
+                    boxNum = 8;
+                    // enemyGenerator.SetGameMode(GameMode.TreasureAll);
+                    break;
+                }
             case 2:
-            {
-                roomNumber = 1;
-                boxNum = 3;
-                // enemyGenerator.SetGameMode(GameMode.Survival);
-                break;
-            }
+                {
+                    roomNumber = 1;
+                    boxNum = 3;
+                    // enemyGenerator.SetGameMode(GameMode.Survival);
+                    break;
+                }
             case 3:
-            {
-                roomNumber = 1;
-                break;
-            }
+                {
+                    roomNumber = 1;
+                    break;
+                }
         }
     }
 
@@ -559,28 +540,28 @@ public class JourneyManager : MonoBehaviour
         switch (winCase)
         {
             case 0:
-            {
-                //roomNumber = 1;
-                roomNumber = Random.Range(2, 5);
-                boxNum = 5;
-                enemyGenerator.SetGameMode(GameMode.BeatAll);
-                break;
-            }
+                {
+                    //roomNumber = 1;
+                    roomNumber = Random.Range(2, 5);
+                    boxNum = 5;
+                    enemyGenerator.SetGameMode(GameMode.BeatAll);
+                    break;
+                }
             case 1:
-            {
-                //roomNumber = 1;
-                roomNumber = 7;
-                boxNum = 12;
-                enemyGenerator.SetGameMode(GameMode.TreasureAll);
-                break;
-            }
+                {
+                    //roomNumber = 1;
+                    roomNumber = 7;
+                    boxNum = 12;
+                    enemyGenerator.SetGameMode(GameMode.TreasureAll);
+                    break;
+                }
             case 2:
-            {
-                roomNumber = 1;
-                boxNum = 3;
-                enemyGenerator.SetGameMode(GameMode.Survival);
-                break;
-            }
+                {
+                    roomNumber = 1;
+                    boxNum = 3;
+                    enemyGenerator.SetGameMode(GameMode.Survival);
+                    break;
+                }
         }
     }
 
@@ -589,35 +570,35 @@ public class JourneyManager : MonoBehaviour
         switch (gameMode)
         {
             case GameMode.BeatAll:
-            {
-                roomNumber = Random.Range(2, 5);
-                //roomNumber = 1;
-                boxNum = 5;
-                enemyGenerator.SetGameMode(GameMode.BeatAll);
-                break;
-            }
+                {
+                    roomNumber = Random.Range(2, 5);
+                    //roomNumber = 1;
+                    boxNum = 5;
+                    enemyGenerator.SetGameMode(GameMode.BeatAll);
+                    break;
+                }
             case GameMode.TreasureAll:
-            {
-                roomNumber = 7;
-                //roomNumber = 1;
-                boxNum = 12;
-                enemyGenerator.SetGameMode(GameMode.TreasureAll);
-                break;
-            }
+                {
+                    roomNumber = 7;
+                    //roomNumber = 1;
+                    boxNum = 12;
+                    enemyGenerator.SetGameMode(GameMode.TreasureAll);
+                    break;
+                }
             case GameMode.Survival:
-            {
-                roomNumber = 1;
-                boxNum = 3;
-                enemyGenerator.SetGameMode(GameMode.Survival);
-                break;
-            }
+                {
+                    roomNumber = 1;
+                    boxNum = 3;
+                    enemyGenerator.SetGameMode(GameMode.Survival);
+                    break;
+                }
             case GameMode.Boss:
-            {
-                roomNumber = 1;
-                boxNum = 5;
-                enemyGenerator.SetGameMode(GameMode.Boss);
-                break;
-            }
+                {
+                    roomNumber = 1;
+                    boxNum = 5;
+                    enemyGenerator.SetGameMode(GameMode.Boss);
+                    break;
+                }
         }
     }
 
