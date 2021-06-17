@@ -294,8 +294,8 @@ Map Prefab 中通过参数传入各个主题的瓦片素材，脚本 `JourneyMan
 ### 道具设计
 |道具类型|UI|效果|数量|备注|
 |---|---|---|---|---|
-|加HP道具|<img src="README.assets/HP.png" alt="HP" style="zoom:50%;" />|加 5 HP|可为无限|满HP时无法使用|
-|加MP道具|<img src="README.assets/MP.png" alt="MP" style="zoom:50%;"/>|加 5 MP|可为无限|满MP时无法使用|
+|加HP道具|<img src="README.assets/HP.png" alt="HP" style="zoom:50%;" />|加 50 HP|可为无限|满HP时无法使用|
+|加MP道具|<img src="README.assets/MP.png" alt="MP" style="zoom:50%;"/>|加 50 MP|可为无限|满MP时无法使用|
 |加攻击值道具|<img src="README.assets/agile.png" alt="agile" style="zoom:50%;" />|加 5 攻击值|可为无限|攻击值无上限|
 |加耐力值道具|<img src="README.assets/patience.png" alt="patience" style="zoom:50%;" />|加 5防御值|可为无限|耐力值无上限|
 
